@@ -178,9 +178,10 @@
       color: #1a1a1a;
     }
 
-    .about-headline em {
-      font-style: italic;
-      color: rgb(179, 30, 16) ;
+    .about-headline .em {
+      
+      color: #10437a;
+      font-weight: 700;
     }
 
     .about-right {
@@ -200,12 +201,12 @@
       font-size: clamp(16px, 1.2vw, 16px);
       font-weight: 400;
       line-height: 1.85;
-      color: #555;
+      color: #454545;
     }
 
     .about-p strong {
-      font-weight: 500;
-      color: rgb(179, 30, 16) ;
+      font-weight: 700;
+      color: #10437a;
     }
 
     .about-divider {
@@ -237,7 +238,7 @@
     <div class="about-left">
       <div class="about-label">About Us</div>
       <h1 class="about-headline">
-        Cape Town's auto repair shop that<br><em>actually gets it right.</em>
+        Cape Town's auto repair shop that<br><p class="em">actually gets it right.</p>
       </h1>
     </div>
   
@@ -311,4 +312,395 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  <style>
+   
+  
+    .magic {
+      
+
+      padding: 60px 24px;
+    }
+
+    .services-section {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .services-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5c5c5c;
+      margin-bottom: 8px;
+    }
+
+    .services-heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: #10437a;
+      margin-bottom: 10px;
+    }
+
+    .services-desc {
+      font-size: 14px;
+      color: #626262;
+      max-width: 420px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      height: 480px;
+      cursor: pointer;
+      background: #1a1a1a;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.04);
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.78) 0%,
+        rgba(0, 0, 0, 0.20) 55%,
+        rgba(0, 0, 0, 0.05) 100%
+      );
+    }
+
+    .card-label {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      right: 22px;
+    }
+
+    .card-label span {
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-label span svg {
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        height: 260px;
+      }
+
+      .services-heading {
+        font-size: 22px;
+      }
+    }
+  </style>
+
+<div class="magic">
+  
+      <section class="services-section">
+        <p class="services-eyebrow">What we offer</p>
+        <h2 class="services-heading">Our services for your vehicle</h2>
+        <p class="services-desc">From accurate fault diagnosis to full electrical repairs and routine maintenance, we provide dependable automotive solutions that keep your vehicle safe, reliable, and performing at its best.</p>
+    
+        <div class="cards-grid">
+    
+          <!-- Card 1 -->
+          <div class="card">
+            <img src="vehdiogn.jpeg" alt="Vehicle Diagnostics" />
+            <div class="card-overlay"></div>
+            <div class="card-label">
+              <span>
+                Vehicle Diagnostics
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 3l5 5-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+    
+          <!-- Card 2 -->
+          <div class="card">
+            <img src="elecrepairs.jpg" alt="Auto Electrical Repairs" />
+            <div class="card-overlay"></div>
+            <div class="card-label">
+              <span>
+                Auto Electrical Repairs
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 3l5 5-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+    
+          <!-- Card 3 -->
+          <div class="card">
+            <img src="general.jpg" alt="General Vehicle Maintenance" />
+            <div class="card-overlay"></div>
+            <div class="card-label">
+              <span>
+                General Vehicle Maintenance
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 3l5 5-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+           <!-- Card 3 -->
+           <div class="card">
+            <img src="general.jpg" alt="General Vehicle Maintenance" />
+            <div class="card-overlay"></div>
+            <div class="card-label">
+              <span>
+                General Vehicle Maintenance
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 3l5 5-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+    
+        </div>
+      </section>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+    <!-- Top: Brand + Nav Columns -->
+    <div class="footer__top">
+  
+      <!-- Brand -->
+      <div class="footer__brand">
+        <h2>The Auto Vault</h2>
+        <p>Cape Town's trusted automotive service and repair centre. We diagnose, repair, and maintain your vehicle right.</p>
+        <div class="footer__social">
+  
+          <a href="#" class="footer__social-icon footer__social-icon--facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+  
+     
+  
+          <a href="https://wa.me/27678118395" target="_blank" class="footer__social-icon footer__social-icon--whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+  
+        </div>
+      </div>
+  
+      <!-- Services -->
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="#">Vehicle Diagnostics</a>
+        <a href="#">Auto Electrical Repairs</a>
+        <a href="#">General Maintenance</a>
+      </div>
+  
+      <!-- Company -->
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Our Services</a>
+        <a href="#">Contact Us</a>
+      </div>
+  
+      <!-- Contact -->
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <a href="tel:0215562799">021 556 2799</a>
+        <a href="https://wa.me/27678118395" target="_blank">067 811 8395</a>
+        <a href="#">13A Parklands Building, Parklands Main Road, Cape Town</a>
+      </div>
+  
+    </div>
+    <!-- /footer__top -->
+  
+    <!-- Bottom Bar -->
+    <div class="footer__bottom">
+      <div class="footer__bottom-links">
+      </div>
+      <span class="footer__copyright">&copy; 2026 The Auto Vault. All rights reserved.</span>
+    </div>
+    <!-- /footer__bottom -->
+  
+  </footer>
+  
+
+
+
+
+
+
+
+
+  
+
+  <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/27678118395" target="_blank" class="whatsapp-float">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>Chat with us</span>
+  </a>
+  
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 40px;
+      right: 18px;
+      background: #10437a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(86, 86, 86, 0.737);
+      z-index: 9999;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+  
+    .whatsapp-float i {
+      font-size: 18px;
+    }
+  
+    .whatsapp-float:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    }
+  </style>
+
+
+
 </body>
+
+</html>
