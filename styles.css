@@ -1,0 +1,204 @@
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+  }
+  
+  body {
+     font-family: 'Segoe UI'
+    
+    }
+  
+  nav {
+    background: linear-gradient(135deg, #e0e0e0 0%, #e9e9e9 100%);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    height: 70px;
+    position:fixed;
+    z-index: 1000;
+  }
+  
+  .logo img {
+    height: 4rem; /* adjust this to resize your logo */
+    width: auto;
+    display: block;
+  }
+  
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #0a1e34;
+    letter-spacing: 0.03em;
+  }
+  
+  .menu-toggle .bars {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .menu-toggle .bars span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background:  #0a1e34;
+    border-radius: 0px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Animate to X when open */
+  .menu-toggle.open .bars span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+  .menu-toggle.open .bars span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.open .bars span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+  
+  /* Dropdown */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    background: #ebebeb;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+  
+  .nav-links.open {
+    max-height: 500px;
+    opacity: 1;
+  }
+  
+  .nav-links a {
+    padding: 14px 32px;
+    color:#02162e;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+  
+  .nav-links a:hover {
+    background: linear-gradient(135deg, #02162e 0%, #063358 100%);
+    color:white;
+  }
+  
+  /* Desktop: show links inline */
+  @media (min-width: 768px) {
+    .menu-toggle { display: none; }
+  
+    .nav-links {
+      flex-direction: row;
+      position: static;
+      max-height: none !important;
+      opacity: 1 !important;
+      background: transparent;
+    }
+  
+    .nav-links a {
+      padding: 0 18px;
+      color:#ffffff;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Vehicle Security and Warranty */
+/* Vehicle Security and Warranty */
+/* Vehicle Security and Warranty */
+/* Vehicle Security and Warranty */
+/* Vehicle Security and Warranty */
+.features-grid {
+    background: linear-gradient(135deg, #0d2743 0%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .feature-card {
+
+
+    padding: 0.50rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid  rgb(202, 202, 202) ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+  }
+
+  .feature-icon i {
+    font-size: 18px;
+    color:  rgb(226, 226, 226) ;
+  }
+
+  .feature-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #dfdfdf;
+    margin: 0;
+  }
+
+  .feature-desc {
+    font-size: 13px;
+    color: #d2d2d2;
+    line-height: 1.6;
+    margin: 0;
+  }
+

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<title>The Auto Vault | Vehicle Diagnostics, Auto Electrical Repairs & Maintenance in Cape Town</title>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="sslogo.png" alt="Logo">
+    
+  </div>
+
+<p class="booker">Book Now</p>
+
+
+<style>
+    .booker{
+     padding: 9px 25px;
+        background:  #113154;
+        color: white;
+        border: 2px solid rgba(40, 63, 106, 0.846);
+        font-size: 0.75rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border-radius: 35px;;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+</style>
+
+  <button class="menu-toggle" id="toggle" aria-label="Toggle menu">
+
+    <span>Menu</span>
+    <div class="bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Services</a>
+
+  </div>
+  
+</nav>
+
+<script>
+    const toggle = document.getElementById('toggle');
+  const navLinks = document.getElementById('navLinks');
+  
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  </script>
+
+
+
+
+<style>
+
+    .hero {
+        height: 550px;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                    url('clibg.webp') center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+
+    .usp{
+
+        margin-top: 25px;
+
+        padding: 5px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 10px;
+        letter-spacing: 1px;
+        margin-top: 40px;
+    }
+
+    .hero-btn {
+        margin-top: 60px;
+        padding: 10px 25px;
+        background:  #0a1e34;
+        color: white;
+        border: 2px solid rgba(40, 63, 106, 0.846);
+        font-size: 0.80rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border-radius: 35px;;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .hero-btn:hover {
+        background: #091549;
+    }
+
+    @media (max-width: 768px) {
+        .hero { height: 500px; }
+        h1 { font-size: 3rem; }
+    }
+</style>
+
+<div class="hero">
+  <h3>Expert Refrigeration & Air Conditioning Repairs</h3>
+  <p class="usp">Domestic & Commercial HVAC Specialists | Fast, Reliable & Guaranteed Service</p>
+  <a href="contact.html" class="hero-btn">Book Now</a>
+</div>
+
+
+<style>
+ 
+    
+      
+    
+    .about-wrap {
+      
+      padding: 1.5rem 1.5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .about-top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 900px) {
+      .about-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: end;
+      }
+    }
+
+    .about-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+  
+
+    .about-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.13;
+      color: #1a1a1a;
+    }
+
+    .about-headline em {
+      font-style: italic;
+      color: rgb(179, 30, 16) ;
+    }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 900px) {
+      .about-right {
+        padding-top: 2rem;
+      }
+    }
+
+    .about-p {
+      font-size: clamp(16px, 1.2vw, 16px);
+      font-weight: 400;
+      line-height: 1.85;
+      color: #555;
+    }
+
+    .about-p strong {
+      font-weight: 500;
+      color: rgb(179, 30, 16) ;
+    }
+
+    .about-divider {
+      width: 100%;
+      height: 0.5px;
+      background: #e0e0e0;
+      margin: clamp(2rem, 4vw, 4rem) 0;
+    }
+
+    .about-bottom {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    @media (min-width: 640px) {
+      .about-bottom {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+   
+  </style>
+
+
+<section class="about-wrap">
+
+<div class="about-top">
+    <div class="about-left">
+      <div class="about-label">About Us</div>
+      <h1 class="about-headline">
+        Cape Town's auto repair shop that<br><em>actually gets it right.</em>
+      </h1>
+    </div>
+  
+    <div class="about-right">
+      <p class="about-p">
+        The Auto Vault is a professional automotive service and repair centre based in Cape Town, built on one simple belief: <strong>quality work, zero shortcuts.</strong> We specialise in vehicle diagnostics, auto electrical repairs, and general maintenance for car owners who deserve straight answers and real solutions.
+      </p>
+      <p class="about-p">
+        Using modern diagnostic tools and skilled technicians, we get to the root of the problem fast. No guesswork, no inflated bills. Whether it's an electrical fault or a routine service, you'll always know exactly what's being done to your vehicle and why. That's our promise.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="features-grid">
+
+    <!-- Vehicle Diagnostics -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fa-solid fa-gauge-high"></i>
+      </div>
+      <p class="feature-title">Vehicle Diagnostics</p>
+      <p class="feature-desc">We use modern diagnostic tools to accurately pinpoint any fault in your vehicle, fast and without the guesswork.</p>
+    </div>
+  
+    <!-- Auto Electrical Repairs -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fa-solid fa-car-battery"></i>
+      </div>
+      <p class="feature-title">Auto Electrical Repairs</p>
+      <p class="feature-desc">From wiring faults to battery and electrical system failures, our skilled technicians find and fix the problem properly.</p>
+    </div>
+  
+    <!-- General Vehicle Maintenance -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </div>
+      <p class="feature-title">General Vehicle Maintenance</p>
+      <p class="feature-desc">Keep your car running at its best with reliable, thorough maintenance services you can count on every time.</p>
+    </div>
+  
+  </div>
+
+
+
+</body>
