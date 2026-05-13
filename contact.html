@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<title>SS Workshop & Fitment Centre | Engine Specialists, Vehicle Services & Parts in Bloemfontein | Book Now</title></head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="sslogo.png" alt="Logo">
+    
+  </div>
+
+
+
+  <button class="menu-toggle" id="toggle" aria-label="Toggle menu">
+
+    <span>Menu</span>
+    <div class="bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="contact.html">Book Now</a>
+
+  </div>
+  
+</nav>
+
+
+
+
+<style>
+
+    .hero {
+        height: 550px;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                    url('assets/ssbg.jpg') center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+
+    .usp{
+
+        margin-top: 25px;
+
+        padding: 5px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 10px;
+        letter-spacing: 1px;
+        margin-top: 40px;
+    }
+
+    .hero-btn {
+        margin-top: 60px;
+        padding: 10px 25px;
+        background:  #0e2d4e;
+        color: white;
+        border: 2px solid rgba(135, 151, 181, 0.846);
+        font-size: 0.80rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        border-radius: 35px;;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .hero-btn:hover {
+        background: #091549;
+    }
+
+    @media (max-width: 768px) {
+        .hero { height: 400px; }
+        h1 { font-size: 3rem; }
+    }
+</style>
+
+<div class="hero">
+  <h3>Get in Touch With Us</h3>
+  <p class="usp">We're here to help, book a service, enquire about parts, or ask us anything.</p>
+</div>
+
+
+
+
+
+ <style>
+      .whole { background: #ffffff; }
+      .contact {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh;
+        padding: 20px;
+      }
+      .contact-container {
+        display: flex;
+        max-width: 1100px;
+        width: 100%;
+        background: white;
+        border-radius: 2px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+      .info-panel {
+        background: #1a2744;
+        color: #fff;
+        padding: 50px 36px;
+        width: 300px;
+        flex-shrink: 0;
+      }
+      .info-panel h2 { color: #fff; font-size: 24px; font-weight: 500; margin: 0 0 10px; }
+      .info-panel p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; margin: 0 0 36px; }
+      .info-row { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+      .info-icon {
+        width: 38px; height: 38px; border-radius: 50%;
+        background: rgba(255,255,255,0.12);
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      }
+      .info-icon i { font-size: 17px; color: #fff; }
+      .info-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+      .info-val { font-size: 13px; color: rgba(255,255,255,0.9); }
+      .info-val a { color: rgba(255,255,255,0.9); text-decoration: none; }
+  
+      .form-panel { padding: 50px 40px; flex: 1; background: white; }
+      .form-panel h2 { font-size: 22px; font-weight: 500; color: #1a1a1a; margin: 0 0 6px; }
+      .form-panel .sub { font-size: 13px; color: #888; margin: 0 0 28px; }
+  
+      .type-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 24px; }
+      .type-btn {
+        border: 1px solid #e0e0e0; border-radius: 6px;
+        padding: 14px 12px; cursor: pointer; background: white; text-align: left; transition: all 0.15s;
+      }
+      .type-btn:hover { background: #f7f7f7; }
+      .type-btn.active { border: 1.5px solid #1a2744; background: #f4f6fb; }
+      .type-btn i { font-size: 20px; color: #1a2744; display: block; margin-bottom: 6px; }
+      .type-btn span { font-size: 13px; font-weight: 500; color: #1a1a1a; display: block; }
+      .type-btn small { font-size: 11px; color: #999; }
+  
+      .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .field { margin-bottom: 16px; }
+      .field label { display: block; font-size: 11px; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+      .field input, .field select, .field textarea {
+        width: 100%; padding: 11px 13px;
+        border: 1px solid #e0e0e0; border-radius: 4px;
+        font-size: 14px; font-family: inherit;
+        background: #fafafa; color: #1a1a1a;
+        box-sizing: border-box; transition: border-color 0.2s;
+      }
+      .field input:focus, .field select:focus, .field textarea:focus {
+        outline: none; border-color: #1a2744; background: white;
+      }
+      .field input::placeholder, .field textarea::placeholder { color: #bbb; }
+      .field textarea { resize: vertical; min-height: 100px; }
+      .field select { cursor: pointer; appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px;
+      }
+  
+      .dynamic-section { border-top: 1px solid #f0f0f0; padding-top: 20px; margin-top: 4px; }
+      .dynamic-section .section-label { font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+  
+      .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+      .tag {
+        border: 1px solid #e0e0e0; border-radius: 20px;
+        padding: 6px 14px; font-size: 12px; cursor: pointer;
+        background: white; color: #666; transition: all 0.15s;
+      }
+      .tag:hover { border-color: #1a2744; color: #1a2744; }
+      .tag.selected { border-color: #1a2744; background: #1a2744; color: #fff; }
+  
+      .exchange-note {
+        background: #f4f6fb; border-radius: 6px;
+        padding: 10px 14px; font-size: 13px; color: #555; margin-bottom: 16px;
+        display: flex; align-items: flex-start; gap: 8px;
+      }
+      .exchange-note i { color: #1a2744; font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+  
+      .submit-btn {
+        background: #1a2744; color: #fff; border: none;
+        padding: 13px 30px; font-size: 14px; border-radius: 4px;
+        cursor: pointer; font-weight: 500;
+        display: flex; align-items: center; gap: 8px; margin-top: 10px;
+        transition: background 0.2s;
+      }
+      .submit-btn:hover { background: #243660; }
+  
+      .success-msg {
+        display: none; background: #edfaf3; border: 1px solid #b6e8cf;
+        border-radius: 6px; padding: 16px 20px;
+        font-size: 14px; color: #1a6640; margin-top: 16px;
+        align-items: center; gap: 10px;
+      }
+      .success-msg i { font-size: 20px; }
+  
+      .hidden { display: none; }
+  
+      @media (max-width: 768px) {
+        .contact-container { flex-direction: column; }
+        .info-panel { width: auto; padding: 30px 24px; }
+        .form-panel { padding: 30px 24px; }
+        .row2 { grid-template-columns: 1fr; }
+        .type-grid { grid-template-columns: 1fr 1fr; }
+      }
+    </style>
+
+  
+  <section class="whole">
+    <div class="contact">
+      <div class="contact-container">
+  
+        <!-- INFO PANEL -->
+        <div class="info-panel">
+          <h2>Get in touch</h2>
+          <p>Visit us or send a message — we'll get back to you as soon as possible.</p>
+          <div class="info-row">
+            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <div class="info-label">Phone</div>
+              <div class="info-val"><a href="tel:0829455152">082 945 5152</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div>
+              <div class="info-label">WhatsApp</div>
+              <div class="info-val"><a href="https://wa.me/27829455152" target="_blank">082 945 5152</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <div class="info-label">Location</div>
+              <div class="info-val">10 Ambulans Road, Hilton, Bloemfontein</div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- FORM PANEL -->
+        <div class="form-panel">
+          <h2>How can we help?</h2>
+          <p class="sub">Select what you need and we'll tailor the form for you.</p>
+  
+          <!-- enquiry type selector -->
+          <div class="type-grid">
+            <button type="button" class="type-btn" onclick="setType('service')" id="btn-service">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+              <span>Book a service</span>
+              <small>Oil, brakes, inspection</small>
+            </button>
+            <button type="button" class="type-btn" onclick="setType('engine')" id="btn-engine">
+              <i class="fa-solid fa-gears"></i>
+              <span>Engine / gearbox</span>
+              <small>Rebuilds, replacements</small>
+            </button>
+            <button type="button" class="type-btn" onclick="setType('parts')" id="btn-parts">
+              <i class="fa-solid fa-box"></i>
+              <span>Parts enquiry</span>
+              <small>Buy or fitment</small>
+            </button>
+            <button type="button" class="type-btn" onclick="setType('general')" id="btn-general">
+              <i class="fa-solid fa-comment"></i>
+              <span>General enquiry</span>
+              <small>Anything else</small>
+            </button>
+          </div>
+  
+          <!-- FormSubmit form — replace YOUR_EMAIL_HERE -->
+          <form id="contact-form" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+  
+            <!-- FormSubmit config -->
+            <input type="hidden" name="_captcha" value="false"/>
+            <input type="hidden" name="_template" value="table"/>
+            <input type="hidden" name="_subject" value="New enquiry — SS Workshop & Fitment Centre"/>
+            <input type="hidden" name="enquiry_type" id="hidden-type" value=""/>
+  
+            <div class="row2">
+              <div class="field">
+                <label for="fullname">Full name</label>
+                <input type="text" id="fullname" name="full_name" placeholder="e.g. Johan Visser" required/>
+              </div>
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g. 082 123 4567" required/>
+              </div>
+            </div>
+  
+            <!-- SERVICE -->
+            <div id="section-service" class="dynamic-section hidden">
+              <div class="section-label">Service details</div>
+              <div class="row2">
+                <div class="field">
+                  <label for="svc-make">Vehicle make</label>
+                  <select id="svc-make" name="vehicle_make">
+                    <option value="">Select make...</option>
+                    <option>Ford</option><option>Mazda</option><option>Toyota</option>
+                    <option>VW</option><option>Isuzu</option><option>Nissan</option><option>Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="svc-model">Vehicle model</label>
+                  <input type="text" id="svc-model" name="vehicle_model" placeholder="e.g. Ranger 2.2, BT50"/>
+                </div>
+              </div>
+              <div class="field">
+                <label for="svc-type">Service type</label>
+                <select id="svc-type" name="service_type">
+                  <option value="">Select service...</option>
+                  <option>Minor service</option>
+                  <option>Major service</option>
+                  <option>Oil & filter change</option>
+                  <option>Brake check & repair</option>
+                  <option>Full vehicle inspection</option>
+                  <option>Engine diagnostics</option>
+                  <option>Suspension work</option>
+                  <option>Rubberizing</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="svc-notes">Additional notes</label>
+                <textarea id="svc-notes" name="notes" placeholder="Anything else we should know about your vehicle?"></textarea>
+              </div>
+            </div>
+  
+            <!-- ENGINE / GEARBOX -->
+            <div id="section-engine" class="dynamic-section hidden">
+              <div class="section-label">Engine / gearbox details</div>
+              <div class="row2">
+                <div class="field">
+                  <label for="eng-make">Vehicle make</label>
+                  <select id="eng-make" name="vehicle_make">
+                    <option value="">Select make...</option>
+                    <option>Ford</option><option>Mazda</option><option>Toyota</option>
+                    <option>VW</option><option>Isuzu</option><option>Nissan</option><option>Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="eng-model">Vehicle model & year</label>
+                  <input type="text" id="eng-model" name="vehicle_model" placeholder="e.g. Ranger 3.2, 2019"/>
+                </div>
+              </div>
+              <div class="field">
+                <label for="eng-type">What do you need?</label>
+                <select id="eng-type" name="engine_service_type" onchange="toggleExchangeNote()">
+                  <option value="">Select option...</option>
+                  <option value="new">New engine</option>
+                  <option value="recon">Reconditioned engine</option>
+                  <option value="exchange">Engine exchange (trade-in)</option>
+                  <option value="rebuild">Engine rebuild / repair</option>
+                  <option value="gearbox">Gearbox repair / replacement</option>
+                  <option value="diag">Advanced diagnostics</option>
+                </select>
+              </div>
+              <div id="exchange-note" class="exchange-note hidden">
+                <i class="fa-solid fa-circle-info"></i>
+                Bring your old engine in — we'll deduct its value from your replacement cost.
+              </div>
+              <div class="field">
+                <label for="eng-problem">Describe the problem</label>
+                <textarea id="eng-problem" name="problem_description" placeholder="e.g. Smoking on startup, knocking noise, won't turn over..."></textarea>
+              </div>
+            </div>
+  
+            <!-- PARTS -->
+            <div id="section-parts" class="dynamic-section hidden">
+              <div class="section-label">Parts enquiry</div>
+              <div class="row2">
+                <div class="field">
+                  <label for="pts-make">Vehicle make</label>
+                  <select id="pts-make" name="vehicle_make">
+                    <option value="">Select make...</option>
+                    <option>Ford</option><option>Mazda</option><option>Toyota</option>
+                    <option>VW</option><option>Isuzu</option><option>Nissan</option><option>Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="pts-model">Vehicle model & year</label>
+                  <input type="text" id="pts-model" name="vehicle_model" placeholder="e.g. Ranger 2.2, 2020"/>
+                </div>
+              </div>
+              <div class="field">
+                <label>Part type <span style="font-size:11px;color:#aaa;text-transform:none;letter-spacing:0;">(select all that apply)</span></label>
+                <div class="tag-row" id="parts-tags">
+                  <span class="tag" onclick="toggleTag(this)">Injectors</span>
+                  <span class="tag" onclick="toggleTag(this)">Turbocharger</span>
+                  <span class="tag" onclick="toggleTag(this)">Ecoboost engine</span>
+                  <span class="tag" onclick="toggleTag(this)">Ranger engine</span>
+                  <span class="tag" onclick="toggleTag(this)">Diesel pump</span>
+                  <span class="tag" onclick="toggleTag(this)">2.2 / 3.2 turbo</span>
+                  <span class="tag" onclick="toggleTag(this)">Gearbox</span>
+                  <span class="tag" onclick="toggleTag(this)">Other</span>
+                </div>
+                <input type="hidden" id="selected-parts" name="parts_required" value=""/>
+              </div>
+              <div class="field" style="margin-top:14px;">
+                <label for="pts-fitment">Do you need fitment?</label>
+                <select id="pts-fitment" name="fitment_required">
+                  <option value="">Select...</option>
+                  <option>Yes — supply and fit</option>
+                  <option>No — supply only, I'll fit myself</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pts-notes">Additional notes</label>
+                <textarea id="pts-notes" name="notes" placeholder="Any specific part numbers, specs or details?"></textarea>
+              </div>
+            </div>
+  
+            <!-- GENERAL -->
+            <div id="section-general" class="dynamic-section hidden">
+              <div class="section-label">Your message</div>
+              <div class="field">
+                <label for="gen-message">Message</label>
+                <textarea id="gen-message" name="message" placeholder="Tell us how we can help..."></textarea>
+              </div>
+            </div>
+  
+            <div id="submit-row" class="hidden">
+              <button type="submit" class="submit-btn">
+                <i class="fa-solid fa-paper-plane"></i> Send enquiry
+              </button>
+            </div>
+  
+            <div class="success-msg" id="success-msg">
+              <i class="fa-solid fa-circle-check"></i>
+              Thanks! We've received your enquiry and will be in touch shortly.
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    function setType(type) {
+      ['service','engine','parts','general'].forEach(function(t) {
+        document.getElementById('section-' + t).classList.add('hidden');
+        document.getElementById('btn-' + t).classList.remove('active');
+      });
+      document.getElementById('section-' + type).classList.remove('hidden');
+      document.getElementById('btn-' + type).classList.add('active');
+      document.getElementById('submit-row').classList.remove('hidden');
+      document.getElementById('hidden-type').value = type;
+    }
+  
+    function toggleExchangeNote() {
+      var val = document.getElementById('eng-type').value;
+      var note = document.getElementById('exchange-note');
+      val === 'exchange' ? note.classList.remove('hidden') : note.classList.add('hidden');
+    }
+  
+    function toggleTag(el) {
+      el.classList.toggle('selected');
+      var selected = Array.from(document.querySelectorAll('#parts-tags .tag.selected')).map(function(t){ return t.textContent; });
+      document.getElementById('selected-parts').value = selected.join(', ');
+    }
+  </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+<footer class="footer">
+
+  <!-- Top: Brand + Nav Columns -->
+  <div class="footer__top">
+
+    <!-- Brand -->
+    <div class="footer__brand">
+      <h2>SS Workshop & Fitment Centre</h2>
+      <p>Bloemfontein's engine specialists. We rebuild, service, and supply parts to keep your vehicle running at its best.</p>
+      <div class="footer__social">
+
+        <a href="#" class="footer__social-icon footer__social-icon--facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <a href="https://wa.me/27829455152" target="_blank" class="footer__social-icon footer__social-icon--whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="footer__col">
+      <h4>Services</h4>
+      <a href="#">Engine Specialist Services</a>
+      <a href="#">Minor & Major Servicing</a>
+      <a href="#">Engines & Gearboxes</a>
+      <a href="#">Injectors & Turbochargers</a>
+    </div>
+
+    <!-- Company -->
+    <div class="footer__col">
+      <h4>Company</h4>
+      <a href="index.html">Home</a>
+ 
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <a href="tel:0829455152">082 945 5152</a>
+      <a href="https://wa.me/27829455152" target="_blank">WhatsApp Us</a>
+      <a href="#">10 Ambulans Road, Hilton, Bloemfontein</a>
+    </div>
+
+  </div>
+  <!-- /footer__top -->
+
+  <!-- Bottom Bar -->
+  <div class="footer__bottom">
+    <div class="footer__bottom-links">
+    </div>
+    <span class="footer__copyright">&copy; 2026 SS Workshop & Fitment Centre. All rights reserved.</span>
+  </div>
+  <!-- /footer__bottom -->
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+  <script src="scripts.js"></script>
+</body>
+
+</html>
