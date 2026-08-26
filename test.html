@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<title>Engine Details | Engine Specialists, Vehicle Services & Parts in Bloemfontein | Vehicle Engines</title>
+</head>
+    
+
+<body>
+<nav>
+  <div class="logo">
+    <img src="sslogo.png" alt="Logo">
+    
+  </div>
+
+  <button class="menu-toggle" id="toggle" aria-label="Toggle menu">
+
+    <span>Menu</span>
+    <div class="bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="engines.html">Vehicle Engines</a>
+    <a href="contact.html">Book Now</a>
+
+  </div>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+<style>
+
+
+  /* ── New Arrival Vehicles ── */
+
+  .just-in {
+    font-family: 'DM Sans', sans-serif;
+    padding: 60px 0 80px;
+    min-height: 5vh;
+  }
+
+  /* ── Section Header ── */
+  .section-header {
+    padding: 0 40px 36px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: black;
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    color: black;
+    line-height: 1.1;
+  }
+
+  .section-desc {
+    margin-top: 10px;
+    font-size: 15px;
+    color: black;
+    max-width: 400px;
+  }
+
+  /* ── Arrow Buttons — desktop only ── */
+  .nav-arrows {
+    display: none;
+    gap: 10px;
+    flex-shrink: 0;
+    margin-bottom: 4px;
+  }
+
+  @media (min-width: 768px) {
+    .nav-arrows { display: flex; }
+  }
+
+  .nav-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid #0b8777;
+    background: transparent;
+    color: #11a28f;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+    line-height: 1;
+  }
+
+  .nav-arrow:hover {
+    background: #11a28f;
+    color: #fff;
+  }
+
+  .nav-arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* ── Scroll Track ── */
+  .scroll-wrapper {
+    position: relative;
+  }
+
+  .vehicles-track {
+    display: flex;
+    gap: 20px;
+    padding: 0 0 28px 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 15px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .track-spacer {
+    flex: 0 0 40px;
+    min-width: 40px;
+  }
+
+  .vehicles-track::-webkit-scrollbar { display: none; }
+
+  /* ── Vehicle Card ── */
+  .vehicle-card {
+    flex: 0 0 300px;
+    height: auto;
+    border-radius: 12px;
+    padding: 5px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Card colour variants */
+  .vehicle-card.blue   { background: none; }
+  .vehicle-card.dark   { background: var(--card-dark); }
+  .vehicle-card.accent { background: var(--card-accent); }
+
+  /* Subtle radial glow */
+  .vehicle-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── Card: Top row (unused currently but kept for future use) ── */
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .card-year {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ── PRODUCT CARD (was missing — this is why cards looked broken) ── */
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .product-card-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .product-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-card-body {
+    padding: 14px 10px 10px;
+
+
+  }
+
+  .product-card-category {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(15, 14, 14, 0.55);
+    margin-bottom: 6px;
+  }
+
+  .vehicle-card.blue .product-card-category {
+    color: #6b6b6b;
+  }
+
+  .product-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f0e0e;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .vehicle-card.blue .product-card-title {
+    color: #1a1a1a;
+  }
+
+  .product-card-price {
+    font-size: 18px;
+    font-weight: 800;
+    color: #11a28f;
+    margin-bottom: 14px;
+  }
+
+  .product-card-button {
+    display: block;
+    width: 100%;
+    background: #11a28f;
+    border: none;
+    border-radius: 999px;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .product-card-button:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+  }
+
+  .product-card-button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .product-card-button svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ── Scroll Progress Bar ── */
+  .scroll-bar-wrap {
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .scroll-bar-track {
+    flex: 1;
+    height: 9px;
+    background: rgb(179, 179, 179);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .scroll-bar-thumb {
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(115deg, #128e7e 0%, #0b534a 100%);
+    border-radius: 10px;
+    transition: width 0.1s;
+  }
+
+  .scroll-count {
+    font-size: 15px;
+    color: #0b534a;
+    white-space: nowrap;
+    min-width: 40px;
+    text-align: right;
+  }
+
+  /* ── MOBILE RESPONSIVENESS ── */
+  @media (max-width: 767px) {
+    .just-in {
+      padding: 40px 0 56px;
+    }
+
+    .section-header {
+      padding: 0 20px 24px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .section-desc {
+      max-width: 100%;
+    }
+
+    .track-spacer {
+      flex: 0 0 20px;
+      min-width: 20px;
+    }
+
+    .vehicle-card {
+      flex: 0 0 78vw;
+      max-width: 300px;
+    }
+
+    .scroll-bar-wrap {
+      padding: 0 20px;
+    }
+  }
+</style>
+
+
+  <br>
+  <br>
+  <section class="just-in">
+
+    <div class="section-header">
+      <div class="section-header-text">
+     
+        <h2 class="section-title">Shop<span style="color:#11a28f"> Engines </span></h2>
+        <p class="section-desc">Brand new stock added directly to our showroom floor, be the first to grab a deal. &#8594;</p>
+      </div>
+
+      <!-- Desktop-only arrows, top-right of the header -->
+      <div class="nav-arrows">
+        <button class="nav-arrow" id="arrowPrev" aria-label="Previous">&#8592;</button>
+        <button class="nav-arrow" id="arrowNext" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+
+    <div class="scroll-wrapper">
+      <div class="vehicles-track" id="track">
+        <div class="track-spacer"></div>
+
+        <!-- ═══════════════════════════════════════
+             VEHICLE CARDS
+             Add your own content inside each card.
+             Card colours: blue | dark | accent
+             Copy/paste a block to add more cards.
+        ════════════════════════════════════════ -->
+
+        <div class="vehicle-card blue">
+          <div class="product-card">
+            <div class="product-card-image">
+              <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Engines</div>
+              <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
+              <div class="product-card-price">R18 500</div>
+              <div class="product-card-button">
+                <a href="engine-details.html">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                  Enquire
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vehicle-card dark">
+          <div class="product-card">
+            <div class="product-card-image">
+              <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Engines</div>
+              <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
+              <div class="product-card-price">R18 500</div>
+              <div class="product-card-button">
+                <a href="engine-details.html">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                  Enquire
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vehicle-card dark">
+          <div class="product-card">
+            <div class="product-card-image">
+              <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Engines</div>
+              <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
+              <div class="product-card-price">R18 500</div>
+              <div class="product-card-button">
+                <a href="engine-details.html">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                  Enquire
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vehicle-card dark">
+          <div class="product-card">
+            <div class="product-card-image">
+              <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Engines</div>
+              <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
+              <div class="product-card-price">R18 500</div>
+              <div class="product-card-button">
+                <a href="engine-details.html">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                  Enquire
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /vehicles-track -->
+
+      <div class="scroll-bar-wrap">
+        <div class="scroll-bar-track">
+          <div class="scroll-bar-thumb" id="thumb"></div>
+        </div>
+        <span class="scroll-count" id="count">1 / 4</span>
+      </div>
+
+    </div>
+
+  </section>
+
+<script>
+  const track     = document.getElementById('track');
+  const thumb     = document.getElementById('thumb');
+  const count     = document.getElementById('count');
+  const arrowPrev = document.getElementById('arrowPrev');
+  const arrowNext = document.getElementById('arrowNext');
+  const cards     = track.querySelectorAll('.vehicle-card');
+  const total     = cards.length;
+
+  // Scroll exactly one card width + gap per click
+  function scrollByCard(direction) {
+    const cardWidth = cards[0].offsetWidth + 20;
+    track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+  }
+
+  arrowPrev.addEventListener('click', () => scrollByCard(-1));
+  arrowNext.addEventListener('click', () => scrollByCard(1));
+
+  function updateUI() {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    const pct = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+    thumb.style.width = Math.max(20, pct * 100) + '%';
+
+    // Disable arrows at the ends
+    arrowPrev.disabled = track.scrollLeft <= 0;
+    arrowNext.disabled = track.scrollLeft >= maxScroll - 1;
+
+    // Card counter
+    let closest = 0, minDist = Infinity;
+    cards.forEach((c, i) => {
+      const dist = Math.abs(c.getBoundingClientRect().left - track.getBoundingClientRect().left);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    count.textContent = (closest + 1) + ' / ' + total;
+  }
+
+  track.addEventListener('scroll', updateUI);
+  updateUI(); // set initial state
+</script>
+
+</body>
+</html>
