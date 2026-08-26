@@ -429,3 +429,220 @@
       }
     }
   
+
+
+
+
+
+
+
+  
+
+
+
+.all-stock{
+
+  padding:20px;
+}
+
+  .results-count {
+    color: #6b6b6b;
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .results-count strong {
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+
+  /* ===== GRID ===== */
+  /* Mobile default: 2 columns */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Tablet: 3 columns */
+  @media (min-width: 700px) {
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Desktop: 4 columns */
+  @media (min-width: 1000px) {
+    .product-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* ===== CARD ===== */
+  .product-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* Fixed height keeps every card identical regardless of title length */
+    height: 380px;
+  }
+
+  .product-card-image {
+    background: #f7f7f7;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .product-card-image img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+  }
+
+  .product-card-body {
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .product-card-category {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    margin-bottom: 6px;
+  }
+
+  .product-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #1a1a1a;
+    /* Fixed 2-line clamp: title always truncates to "..." instead of growing the card.
+       BACKEND NOTE: no need to pre-truncate the title string server-side —
+       this CSS clamp handles it automatically for any length of text. */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Reserve exactly 2 lines of height so short titles don't shift the price/button up */
+    min-height: calc(1.35em * 2);
+    margin-bottom: 10px;
+  }
+
+  .product-card-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #092a4e;
+    margin-top: auto;
+    margin-bottom: 12px;
+  }
+
+  .product-card-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #092a4e;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .product-card-button:hover {
+    background:#0e4580;
+  }
+
+  .product-card-button svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ===== BRAND FILTER ACCORDION ===== */
+  .filter-accordion {
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    background: #f7f7f7;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .filter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .filter-header span {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4a4a4a;
+  }
+
+  .filter-header svg {
+    width: 18px;
+    height: 18px;
+    color: #4a4a4a;
+    transition: transform 0.2s ease;
+  }
+
+  /* Checkbox controls the open/closed state — no JS needed */
+  .filter-toggle {
+    display: none;
+  }
+
+  .filter-toggle:checked ~ .filter-body {
+    max-height: 320px;
+  }
+
+  .filter-toggle:checked ~ .filter-header svg {
+    transform: rotate(180deg);
+  }
+
+  .filter-body {
+    max-height: 0;
+    overflow-y: auto;
+    transition: max-height 0.25s ease;
+    padding: 0 18px;
+  }
+
+  .filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #1a1a1a;
+    border-top: 1px solid #eaeaea;
+  }
+
+  .filter-row:first-child {
+    border-top: none;
+  }
+
+  .filter-row-count {
+    color: #9a9a9a;
+    font-size: 14px;
+  }
+

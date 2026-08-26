@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<title>Engine Details | Engine Specialists, Vehicle Services & Parts in Bloemfontein | Vehicle Engines</title>
+</head>
+    
+
+<body>
+<nav>
+  <div class="logo">
+    <img src="sslogo.png" alt="Logo">
+    
+  </div>
+
+  <button class="menu-toggle" id="toggle" aria-label="Toggle menu">
+
+    <span>Menu</span>
+    <div class="bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="engines.html">Vehicle Engines</a>
+    <a href="contact.html">Book Now</a>
+
+  </div>
+  
+</nav>
+
+
+
+
+
+
+
+
+<!-- Engine/Part Details section  -->
+<!-- Engine/Part Details section  -->
+<!-- Engine/Part Details section  -->
+<!-- Engine/Part Details section  -->
+<!-- Engine/Part Details section  -->
+<!-- Engine/Part Details section  -->
+<!-- Engine/Part Details section  -->
+<!-- Engine/Part Details section  -->
+<!-- Engine/Part Details section  -->
+<!-- Engine/Part Details section  -->
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+
+
+  .part-details-section {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 20px;
+    padding-top: 6rem;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ===== BREADCRUMB ===== */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 14px;
+    color: #7a7a7a;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 24px;
+  }
+
+  .breadcrumb a {
+    color: #7a7a7a;
+    text-decoration: none;
+  }
+
+  .breadcrumb .current {
+    color: #1a1a1a;
+  }
+
+  /* ===== LAYOUT ===== */
+  .details-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  @media (min-width: 900px) {
+    .details-layout {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .gallery-column {
+      flex: 0 0 45%;
+      position: sticky;
+      top: 20px;
+    }
+    .info-column {
+      flex: 1;
+    }
+  }
+
+  /* ===== GALLERY ===== */
+  .main-image {
+    background: #fafafa;
+    border: 1px solid #ececec;
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .main-image img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+  }
+
+  /* BACKEND NOTE: thumbnail strip only needs to render when there is more
+     than one image for the listing. With a single image, hide/omit this
+     row entirely (it's left visible here with 1 thumb just to show the style). */
+  .thumb-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .thumb {
+    width: 65px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    border: 2px solid #ececec;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .thumb.active {
+    border-color:  #3b5998; 
+  }
+
+  .thumb img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+  }
+
+  /* ===== INFO COLUMN ===== */
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+
+  .badge-brand {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .badge-category {
+    background: transparent;
+    color: #9a9a9a;
+    border: 1px solid #e2e2e2;
+  }
+
+  .product-title {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .product-price {
+    display: inline-block;
+    font-size: 28px;
+    font-weight: 800;
+    color: #3b5998; 
+    margin-bottom: 22px;
+    padding-bottom: 4px;
+ 
+  }
+
+  /* ===== ACTION BUTTONS ===== */
+  .action-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .action-secondary-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 15px;
+    padding: 11px 5px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .action-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+  }
+
+  .action-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .btn-enquire {
+    border: 3px solid #d5d5d5;
+    background: #3b5998; 
+    color: #ffffff;
+    grid-column: span 2;
+  }
+
+  .btn-whatsapp {
+    background: #25d366;
+    color: #ffffff;
+  }
+
+  .btn-call {
+    background: #3b5998; 
+    color: #fbfbfb;
+    border: 3px solid #d5d5d5;
+  }
+
+  /* ===== ACCORDION (Description / Specifications) ===== */
+  .accordion {
+    border: 1px solid #ececec;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .accordion-toggle {
+    display: none;
+  }
+
+  .accordion-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    cursor: pointer;
+    user-select: none;
+    background: #ffffff;
+  }
+
+  .accordion-label span {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .accordion-label svg {
+    width: 25px;
+    height: 25px;
+    color:  #3b5998; 
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .accordion-toggle:checked ~ .accordion-label svg {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .accordion-toggle:checked ~ .accordion-content {
+    max-height: 600px;
+  }
+
+  .accordion-content-inner {
+    padding: 4px 20px 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #3a3a3a;
+  }
+
+  /* Specification rows inside the Specifications accordion */
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid #f0f0f0;
+    font-size: 15px;
+  }
+
+  .spec-row:first-child {
+    border-top: none;
+  }
+
+  .spec-label {
+    color: #7a7a7a;
+  }
+
+  .spec-value {
+    color: #1a1a1a;
+    font-weight: 600;
+    text-align: right;
+    background: #f6f6f6;
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+
+  /* ===== ENQUIRY FORM ===== */
+  .enquiry-form-wrap {
+    scroll-margin-top: 20px;
+    border: 2px solid  #cad5ec86; 
+    border-radius: 4px;
+    padding: 24px 20px;
+    margin-top: 12px;
+  }
+
+  .enquiry-form-heading {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .enquiry-form-subheading {
+    font-size: 14px;
+    color: #7a7a7a;
+    margin-bottom: 18px;
+  }
+
+  .enquiry-item-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fafafa;
+    border: 1px solid #ececec;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+  }
+
+  .enquiry-item-box img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #ececec;
+    flex-shrink: 0;
+  }
+
+  .enquiry-item-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    margin-bottom: 2px;
+  }
+
+  .enquiry-item-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .form-field {
+    margin-bottom: 14px;
+  }
+
+  .form-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 6px;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: #ffffff;
+    border: 1.5px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 11px 13px;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: #e8720c;
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  @media (min-width: 480px) {
+    .form-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+  }
+
+  .form-submit {
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    background:  #3b5998; 
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 12px;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .form-submit:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+  }
+
+
+</style>
+
+
+
+
+
+<section class="part-details-section">
+
+<div class="page">
+
+  <!-- BACKEND NOTE: build breadcrumb dynamically from category > brand > product name -->
+  <div class="breadcrumb">
+    <a href="#">&lsaquo; Engines</a>
+    <span>/</span>
+    <a href="#">Audi engines</a>
+    <span>/</span>
+    <span class="current">Audi 1.8T 20v BFB Engine</span>
+  </div>
+
+  <div class="details-layout">
+
+    <!-- ===== GALLERY ===== -->
+    <div class="gallery-column">
+      <div class="main-image">
+        <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
+      </div>
+      <!-- Only 1 image for now — thumbnail row can be omitted entirely until more photos exist -->
+      <div class="thumb-row">
+        <div class="thumb active">
+          <img src="assets/gearboxesand.jpg" alt="Thumbnail 1">
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== INFO ===== -->
+    <div class="info-column">
+
+
+      <h1 class="product-title">Audi 1.8T 20v BFB Engine</h1>
+      <div class="product-price">R18 500</div>
+
+      <div class="action-grid">
+        <a href="#enquiry-form" class="action-btn btn-enquire">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Enquire
+        </a>
+        <div class="action-secondary-row">
+          <a href="#" class="action-btn btn-whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path><path d="M12 2C6.477 2 2 6.477 2 12c0 1.79.472 3.469 1.298 4.922L2 22l5.223-1.267C8.632 21.542 10.269 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"></path></svg>
+            WhatsApp
+          </a>
+          <a href="tel:0685393212" class="action-btn btn-call">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call us
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== DESCRIPTION ACCORDION (open by default) ===== -->
+      <div class="accordion">
+        <input type="checkbox" id="acc-description" class="accordion-toggle" checked>
+        <label for="acc-description" class="accordion-label">
+          <span>Description</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </label>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>Audi 1.8T 20v BFB Engine for sale in South Africa. This engine is listed for buyers and workshops looking for a replacement engine. We supply imported low-mileage engines and help customers confirm compatibility, current stock details, pricing and warranty support before ordering.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SPECIFICATIONS ACCORDION (closed by default) ===== -->
+      <div class="accordion">
+        <input type="checkbox" id="acc-specs" class="accordion-toggle">
+        <label for="acc-specs" class="accordion-label">
+          <span>Specifications</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </label>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <!-- BACKEND NOTE: generate these rows dynamically from your engine spec fields -->
+            <div class="spec-row"><span class="spec-label">Engine Code</span><span class="spec-value">BFB</span></div>
+            <div class="spec-row"><span class="spec-label">Capacity</span><span class="spec-value">1.8L</span></div>
+            <div class="spec-row"><span class="spec-label">Valves</span><span class="spec-value">20v</span></div>
+            <div class="spec-row"><span class="spec-label">Fuel Type</span><span class="spec-value">Petrol / Turbo</span></div>
+            <div class="spec-row"><span class="spec-label">Condition</span><span class="spec-value">Used - Imported</span></div>
+            <div class="spec-row"><span class="spec-label">Warranty</span><span class="spec-value">3 Months</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SHIPPING / COLLECTION ACCORDION (closed by default) ===== -->
+      <div class="accordion">
+        <input type="checkbox" id="acc-shipping" class="accordion-toggle">
+        <label for="acc-shipping" class="accordion-label">
+          <span>Shipping &amp; Collection</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </label>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>Nationwide courier delivery available, or free collection from our warehouse. Contact us via WhatsApp or phone to confirm delivery costs and timeframes for your area.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ENQUIRY FORM ===== -->
+      <!-- BACKEND NOTE: pre-fill the item name/image from the current listing.
+           Keep it read-only so it's clear in submissions (email/CRM/inbox) exactly
+           which engine or part the enquiry relates to. Wire up the form action /
+           endpoint to your enquiries handler. -->
+      <div id="enquiry-form" class="enquiry-form-wrap">
+        <div class="enquiry-form-heading">Enquire about this item</div>
+        <div class="enquiry-form-subheading">Fill in your details and we'll get back to you shortly.</div>
+
+        <div class="enquiry-item-box">
+          <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
+          <div>
+            <div class="enquiry-item-label">Enquiring about</div>
+            <div class="enquiry-item-name">Audi 1.8T 20v BFB Engine</div>
+          </div>
+        </div>
+
+        <form action="#" method="POST">
+          <!-- BACKEND NOTE: hidden field ties the submission to this exact listing -->
+          <input type="hidden" name="item_name" value="Audi 1.8T 20v BFB Engine">
+          <input type="hidden" name="item_code" value="BFB">
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="enq-name">Full Name</label>
+              <input type="text" id="enq-name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-field">
+              <label for="enq-phone">Phone Number</label>
+              <input type="tel" id="enq-phone" name="phone" placeholder="082 000 0000" required>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="enq-email">Email Address</label>
+            <input type="email" id="enq-email" name="email" placeholder="you@example.com">
+          </div>
+
+          <div class="form-field">
+            <label for="enq-message">Message</label>
+            <textarea id="enq-message" name="message" placeholder="e.g. Is this engine still available? Do you offer delivery to my area?"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Send Enquiry</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+<script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<title>Engines | Engine Specialists, Vehicle Services & Parts in Bloemfontein | Vehicle Engines</title>
+</head>
+    
+
+<body>
+<nav>
+  <div class="logo">
+    <img src="sslogo.png" alt="Logo">
+    
+  </div>
+
+  <button class="menu-toggle" id="toggle" aria-label="Toggle menu">
+
+    <span>Menu</span>
+    <div class="bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="engines.html">Vehicle Engines</a>
+    <a href="contact.html">Book Now</a>
+
+  </div>
+  
+</nav>
+
+
+
+
+
+
+
+
+<!-- Engines Backend -->
+<!-- Engines Backend -->
+<!-- Engines Backend -->
+<!-- Engines Backend -->
+<!-- Engines Backend -->
+<!-- Engines Backend -->
+
+
+
+
+
+
+
+<section class="all-stock">
+
+  <!-- BACKEND NOTE: brand list + counts should be generated dynamically from
+       your engine inventory (group by brand, count listings per brand).
+       The checkbox input is a CSS-only accordion toggle — swap in real
+       <input type="checkbox" name="brand" value="..."> filters when you
+       wire this up so it also filters the grid below. -->
+  <div class="filter-accordion">
+    <input type="checkbox" id="brand-toggle" class="filter-toggle">
+    <label for="brand-toggle" class="filter-header">
+      <span>Brand</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </label>
+    <div class="filter-body">
+      <div class="filter-row"><span>Lamborghini</span><span class="filter-row-count">1</span></div>
+      <div class="filter-row"><span>Land Rover</span><span class="filter-row-count">13</span></div>
+      <div class="filter-row"><span>Lexus</span><span class="filter-row-count">11</span></div>
+      <div class="filter-row"><span>Mahindra</span><span class="filter-row-count">2</span></div>
+
+    </div>
+  </div>
+
+  <p class="results-count">Showing <strong>24</strong> of <strong>50</strong> results</p>
+
+  <div class="product-grid">
+
+    <!-- Card 1 -->
+    <div class="product-card">
+      <div class="product-card-image">
+        <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-category">Engines</div>
+        <!-- Long title example: shows how the 2-line clamp truncates with "..." -->
+        <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
+        <div class="product-card-price">R18 500</div>
+        <button class="product-card-button">
+          <a href="engine-details.html" style=" text-decoration: none; color:white">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          Enquire </a>
+        </button>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="product-card">
+      <div class="product-card-image">
+        <img src="assets/gearboxesand.jpg" alt="BMW 320 E46 16v N42 Engine">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-category">Engines</div>
+        <div class="product-card-title">BMW 320 E46 16v - N42 Engine</div>
+        <div class="product-card-price">R21 500</div>
+        <button class="product-card-button">
+          <a href="engine-details.html" style=" text-decoration: none; color:white">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          Enquire </a>
+        </button>
+      </div>
+    </div>
+
+    <!-- Card 3: extra-long title, demonstrates the fixed-size behaviour -->
+    <div class="product-card">
+      <div class="product-card-image">
+        <img src="images/car-engine.jpg" alt="BMW 325 E46 Double Vanos M54B25 Full Engine Complete With Loom">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-category">Engines</div>
+        <div class="product-card-title">BMW 325 E46 Double Vanos M54B25 Full Engine Complete With Loom</div>
+        <div class="product-card-price">R26 500</div>
+        <button class="product-card-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          Enquire
+        </button>
+      </div>
+    </div>
+
+    <!-- Card 4: short title, still same card size as card 3 -->
+    <div class="product-card">
+      <div class="product-card-image">
+        <img src="images/car-engine.jpg" alt="BMW 320 E46 16v Engine">
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-category">Engines</div>
+        <div class="product-card-title">BMW 320 E46 16v Engine</div>
+        <div class="product-card-price">R26 500</div>
+        <button class="product-card-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          Enquire
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  </section>
+
+
+
+
+
+
+<script src="scripts.js"></script>
+
+</body>
+</html>
