@@ -40,6 +40,101 @@
 
 
 
+<style>
+  .hero {
+      height: 330px;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                  url('assets/ssbg.jpg') center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+  }
+
+  .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e5e7eb;
+      margin-bottom: 10px;
+  }
+
+  .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin: 0 0 12px 0;
+      line-height: 1.2;
+  }
+
+  .usp {
+      font-size: 0.95rem;
+      color: #d1d5db;
+      max-width: 600px;
+      margin: 0 0 30px 0;
+      line-height: 1.5;
+  }
+
+
+
+  .hero-btn {
+      padding: 11px 22px;
+      background: #123964;
+      color: white;
+      border: 2px solid rgba(135, 151, 181, 0.846);
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-radius: 35px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: left;
+      gap: 6px;
+      transition: background 0.2s ease, transform 0.1s ease;
+      white-space: nowrap;
+  }
+
+  .hero-btn:hover {
+      background: #133b66;
+      transform: translateY(-2px);
+  }
+
+
+
+  @media (max-width: 768px) {
+      .hero { height: 300px; }
+      .hero h1 { font-size: 1.8rem; }
+      .usp { font-size: 0.85rem; padding: 0 10px; }
+  }
+
+  @media (max-width: 380px) {
+      .hero-btn {
+       
+          padding: 9px 14px;
+          font-size: 0.7rem;
+      }
+      .hero h1 { font-size: 1.6rem; }
+  }
+</style>
+
+<div class="hero">
+
+  <h1>------</h1>
+  <p class="usp">Engine rebuilds, specialist bakkie servicing, and guaranteed quality parts. Backed by warranty and an engine exchange program.</p>
+  
+  <div class="hero-btn-group">
+      <a href="contact.html" class="hero-btn">Book Now</a>
+
+  </div>
+</div>
+
+
+
 
 
 <!-- Engines Backend -->
@@ -142,10 +237,122 @@
 </script>
 
 
-
-
 <script src="scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@v0.21.0/dist/pocketbase.umd.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+
+  <!-- Top: Brand + Nav Columns -->
+  <div class="footer__top">
+
+    <!-- Brand -->
+    <div class="footer__brand">
+      <h2>SS Workshop & Fitment Centre</h2>
+      <p>Bloemfontein's engine specialists. We rebuild, service, and supply parts to keep your vehicle running at its best.</p>
+      <div class="footer__social">
+
+        <a href="#" class="footer__social-icon footer__social-icon--facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <a href="https://wa.me/27829455152" target="_blank" class="footer__social-icon footer__social-icon--whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="footer__col">
+      <h4>Services</h4>
+      <a href="#">Engine Specialist Services</a>
+      <a href="#">Minor & Major Servicing</a>
+      <a href="#">Engines & Gearboxes</a>
+      <a href="#">Injectors & Turbochargers</a>
+    </div>
+
+    <!-- Company -->
+    <div class="footer__col">
+      <h4>Company</h4>
+      <a href="index.html">Home</a>
+ 
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <a href="tel:0829455152">082 945 5152</a>
+      <a href="https://wa.me/27829455152" target="_blank">WhatsApp Us</a>
+      <a href="contact.html">104 Fritz Stockenstrom, Bloemfontein</a>
+    </div>
+
+  </div>
+  <!-- /footer__top -->
+
+  <!-- Bottom Bar -->
+  <div class="footer__bottom">
+    <div class="footer__bottom-links">
+    </div>
+    <span class="footer__copyright">&copy; 2026 SS Workshop & Fitment Centre. All rights reserved.</span>
+  </div>
+  <!-- /footer__bottom -->
+
+</footer>
+
+
+
+
 
 </body>
 </html>
