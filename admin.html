@@ -1,241 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SS Workshop — Admin</title>
-<style>
-  :root {
-    --charcoal: #1c1f22;
-    --charcoal-light: #2a2e33;
-    --steel: #6b7280;
-    --steel-light: #e5e7eb;
-    --amber: #123964;
-    --amber-dark: #133b66;
-    --bg: #f2f1ee;
-    --card: #ffffff;
-    --danger: #b3261e;
-    --radius: 3px;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: var(--bg);
-    color: var(--charcoal);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - SS Workshop</title>
+  <style>
+    :root {
+      --charcoal: #1c1f22;
+      --charcoal-light: #2a2e33;
+      --steel: #6b7280;
+      --steel-light: #e5e7eb;
+      --amber: #123964;
+      --amber-dark: #133b66;
+      --bg: #f2f1ee;
+      --card: #ffffff;
+      --danger: #b3261e;
+      --radius: 6px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
 
-  /* Navbar */
-  .navbar {
-    background: var(--charcoal);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 24px;
-  }
-  .navbar .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 0.3px;
-  }
-  .navbar .brand .mark {
-    width: 60px;
-    height: 60px;
-    border-radius: 4px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .navbar .brand .mark img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .navbar .brand .sub {
-    font-weight: 400;
-    font-size: 11px;
-    color: var(--steel-light);
-    display: block;
-    letter-spacing: 0.5px;
-  }
-  .navbar-right { display: flex; align-items: center; gap: 10px; }
-  .btn-website {
-    background: transparent;
-    border: 1px solid #4b5054;
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: var(--radius);
-    font-size: 13px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-  }
-  .btn-website:hover { border-color: var(--amber); color: var(--amber); }
-  .btn-logout {
-    background: transparent;
-    border: none;
-    color: var(--steel-light);
-    font-size: 13px;
-    cursor: pointer;
-    padding: 8px 4px;
-  }
-  .btn-logout:hover { color: #fff; }
+    /* Navbar */
+    .navbar {
+      background: var(--charcoal);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      position: absolute;
+      top: 0; left: 0; right: 0;
+    }
+    .navbar .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+    }
+    .navbar .brand .mark {
+      width: 45px;
+      height: 45px;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .navbar .brand .mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .navbar .brand .sub {
+      font-weight: 400;
+      font-size: 11px;
+      color: var(--steel-light);
+      display: block;
+      letter-spacing: 0.5px;
+    }
+    .navbar-right { display: flex; align-items: center; gap: 10px; }
+    .btn-website {
+      background: transparent;
+      border: 1px solid #4b5054;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .btn-website:hover { border-color: var(--amber); color: var(--amber); }
+    .btn-logout {
+      background: transparent;
+      border: none;
+      color: var(--steel-light);
+      font-size: 13px;
+      cursor: pointer;
+      padding: 8px 4px;
+    }
+    .btn-logout:hover { color: #fff; }
 
-  /* Layout */
-  .container { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
-  .page-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  .page-head h1 { font-size: 20px; margin: 0; }
-  .page-head p { margin: 2px 0 0; font-size: 13px; color: var(--steel); }
+    /* Layout */
+    .container { max-width: 900px; width: 100%; margin: 0 auto; padding: 28px 20px 60px; }
+    .page-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      margin-top: 50px;
+    }
+    .page-head h1 { font-size: 20px; margin: 0; }
+    .page-head p { margin: 2px 0 0; font-size: 13px; color: var(--steel); }
 
-  .btn-primary {
-    background: var(--amber);
-    color: #fff;
-    border: none;
-    padding: 10px 18px;
-    border-radius: var(--radius);
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .btn-primary:hover { background: var(--amber-dark); }
+    .btn-primary {
+      background: var(--amber);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary:hover { background: var(--amber-dark); }
 
-  /* Engine cards */
-  .engine-card {
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 16px 18px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
-    border-left: 3px solid var(--amber);
-  }
-  .engine-card .info strong { font-size: 15px; }
-  .engine-card .info .meta { font-size: 12px; color: var(--steel); margin-top: 2px; }
-  .engine-card .price { font-weight: 700; color: var(--charcoal); margin-right: 18px; white-space: nowrap; }
-  .engine-card .row-main { display: flex; align-items: center; gap: 18px; flex: 1; min-width: 0; }
-  .engine-actions button {
-    border: 1px solid var(--steel-light);
-    background: #fff;
-    padding: 6px 10px;
-    border-radius: var(--radius);
-    font-size: 12px;
-    cursor: pointer;
-    margin-left: 6px;
-  }
-  .engine-actions .edit-btn:hover { border-color: var(--amber); color: var(--amber-dark); }
-  .engine-actions .del-btn { color: var(--danger); border-color: #f1d4d1; }
-  .engine-actions .del-btn:hover { background: #fdf0ef; }
+    /* Engine cards */
+    .engine-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+      border-left: 3px solid var(--amber);
+    }
+    .engine-card .info strong { font-size: 15px; }
+    .engine-card .info .meta { font-size: 12px; color: var(--steel); margin-top: 2px; }
+    .engine-card .price { font-weight: 700; color: var(--charcoal); margin-right: 18px; white-space: nowrap; }
+    .engine-card .row-main { display: flex; align-items: center; gap: 18px; flex: 1; min-width: 0; }
+    .engine-actions button {
+      border: 1px solid var(--steel-light);
+      background: #fff;
+      padding: 6px 10px;
+      border-radius: var(--radius);
+      font-size: 12px;
+      cursor: pointer;
+      margin-left: 6px;
+    }
+    .engine-actions .edit-btn:hover { border-color: var(--amber); color: var(--amber-dark); }
+    .engine-actions .del-btn { color: var(--danger); border-color: #f1d4d1; }
+    .engine-actions .del-btn:hover { background: #fdf0ef; }
 
-  .empty-state {
-    text-align: center;
-    padding: 50px 20px;
-    color: var(--steel);
-    background: var(--card);
-    border-radius: var(--radius);
-  }
+    .empty-state {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--steel);
+      background: var(--card);
+      border-radius: var(--radius);
+    }
 
-  /* Modal */
-  .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(20,20,20,0.5);
-    display: flex; align-items: flex-start; justify-content: center;
-    padding: 40px 16px;
-    overflow-y: auto;
-    z-index: 100;
-  }
-  .modal-overlay.hidden { display: none; }
-  .modal {
-    background: #fff;
-    border-radius: 8px;
-    max-width: 520px;
-    width: 100%;
-    padding: 26px;
-  }
-  .modal h2 { margin: 0 0 4px; font-size: 18px; }
-  .modal .modal-sub { font-size: 13px; color: var(--steel); margin-bottom: 18px; }
-  .field-group { margin-bottom: 14px; }
-  .field-row { display: flex; gap: 12px; }
-  .field-row .field-group { flex: 1; }
-  label { font-size: 12px; font-weight: 600; color: var(--charcoal); display: block; margin-bottom: 5px; }
-  input, textarea {
-    width: 100%;
-    padding: 9px 10px;
-    border: 1px solid #d8d8d8;
-    border-radius: var(--radius);
-    font-size: 14px;
-    font-family: inherit;
-  }
-  input:focus, textarea:focus { outline: none; border-color: var(--amber); }
-  .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
-  .btn-secondary {
-    background: #fff;
-    border: 1px solid #d8d8d8;
-    padding: 10px 16px;
-    border-radius: var(--radius);
-    font-size: 14px;
-    cursor: pointer;
-  }
-  .error-text { color: var(--danger); font-size: 13px; margin-top: 8px; }
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(20,20,20,0.5);
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 40px 16px;
+      overflow-y: auto;
+      z-index: 100;
+    }
+    .modal-overlay.hidden { display: none; }
+    .modal {
+      background: #fff;
+      border-radius: 8px;
+      max-width: 520px;
+      width: 100%;
+      padding: 26px;
+    }
+    .modal h2 { margin: 0 0 4px; font-size: 18px; }
+    .modal .modal-sub { font-size: 13px; color: var(--steel); margin-bottom: 18px; }
+    .field-group { margin-bottom: 14px; position: relative; }
+    .field-row { display: flex; gap: 12px; }
+    .field-row .field-group { flex: 1; }
+    label { font-size: 12px; font-weight: 600; color: var(--charcoal); display: block; margin-bottom: 5px; }
+    input, textarea {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1px solid #d8d8d8;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus { outline: none; border-color: var(--amber); }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+    .btn-secondary {
+      background: #fff;
+      border: 1px solid #d8d8d8;
+      padding: 10px 16px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .error-text { color: var(--danger); font-size: 13px; margin-top: 8px; }
 
-  /* Login screen */
-  #login-screen {
-    max-width: 340px;
-    margin: 90px auto;
-    background: var(--card);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  }
-  #login-screen h1 { font-size: 18px; margin-top: 0; }
-  #login-screen .sub { font-size: 13px; color: var(--steel); margin-bottom: 20px; }
+    /* Login screen redesign */
+    #login-screen {
+      width: 100%;
+      max-width: 380px;
+      background: var(--card);
+      padding: 35px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .login-logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0 auto 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .login-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #login-screen h1 { font-size: 20px; margin: 0 0 4px; }
+    #login-screen .sub { font-size: 13px; color: var(--steel); margin-bottom: 24px; }
+    #login-screen .field-group { text-align: left; }
+    
+    /* Password toggle button styling */
+    .password-wrapper {
+      position: relative;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--steel);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px;
+    }
+    .toggle-password:hover { color: var(--charcoal); }
 
-  .hidden { display: none; }
+    .hidden { display: none; }
 
-  @media (max-width: 560px) {
-    .engine-card { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .engine-card .price { margin-right: 0; }
-    .field-row { flex-direction: column; gap: 0; }
-  }
-</style>
+    @media (max-width: 560px) {
+      .engine-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .engine-card .price { margin-right: 0; }
+      .field-row { flex-direction: column; gap: 0; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="login-screen">
-  <h1>Admin Login</h1>
-  <div class="sub">SS Workshop &amp; Fitment Centre Admin</div>
-  <div class="field-group">
-    <label>Email</label>
-    <input type="email" id="login-email">
+  <div class="login-logo">
+    <img src="sslogo.png" alt="SS Workshop Logo">
   </div>
+  <h1>Admin Portal</h1>
+  <div class="sub">SS Workshop &amp; Fitment Centre</div>
+  
+  <div class="field-group">
+    <label>Email Address</label>
+    <input type="email" id="login-email" placeholder="admin@ssworkshop.co.za">
+  </div>
+
   <div class="field-group">
     <label>Password</label>
-    <input type="password" id="login-password">
+    <div class="password-wrapper">
+      <input type="password" id="login-password" placeholder="••••••••">
+      <button type="button" class="toggle-password" id="togglePasswordBtn" onclick="togglePasswordVisibility()">Show</button>
+    </div>
   </div>
+
   <div id="login-error" class="error-text"></div>
-  <button class="btn-primary" style="width:100%; justify-content:center;" onclick="login()">Log In</button>
+  <button class="btn-primary" style="width:100%; justify-content:center; margin-top: 8px;" onclick="login()">Log In</button>
 </div>
 
-<!-- DASHBOARD -->
-<div id="dashboard" class="hidden">
+<div id="dashboard" class="hidden" style="width: 100%;">
   <div class="navbar">
     <div class="brand">
       <div class="mark"><img src="sslogo.png" alt="SS Workshop logo"></div>
@@ -263,7 +311,6 @@
   </div>
 </div>
 
-<!-- MODAL -->
 <div id="modal-overlay" class="modal-overlay hidden">
   <div class="modal">
     <h2 id="modal-title">Add New Engine</h2>
@@ -334,6 +381,19 @@
 
   if (pb.authStore.isValid) showDashboard();
 
+  // Toggle password function
+  function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('login-password');
+    const toggleBtn = document.getElementById('togglePasswordBtn');
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      toggleBtn.textContent = 'Hide';
+    } else {
+      passwordInput.type = 'password';
+      toggleBtn.textContent = 'Show';
+    }
+  }
+
   async function login() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
@@ -351,11 +411,11 @@
   function logout() {
     pb.authStore.clear();
     document.getElementById('dashboard').classList.add('hidden');
-    document.getElementById('login-screen').classList.remove('hidden');
+    document.getElementById('login-screen').style.display = 'block';
   }
 
   function showDashboard() {
-    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('login-screen').style.display = 'none';
     document.getElementById('dashboard').classList.remove('hidden');
     loadEngines();
   }
@@ -433,11 +493,20 @@
     errorBox.textContent = '';
     const id = document.getElementById('edit-id').value;
 
+    const engineName = document.getElementById('f-engine_name').value.trim();
+    const brand = document.getElementById('f-brand').value.trim();
+    const price = document.getElementById('f-Price').value.trim();
+
+    if (!engineName || !brand || !price) {
+      errorBox.textContent = 'Please fill in at least the Engine Name, Brand, and Price.';
+      return;
+    }
+
     const formData = new FormData();
-    formData.append('engine_name', document.getElementById('f-engine_name').value);
-    formData.append('brand', document.getElementById('f-brand').value);
+    formData.append('engine_name', engineName);
+    formData.append('brand', brand);
     formData.append('engine_code', document.getElementById('f-engine_code').value);
-    formData.append('Price', document.getElementById('f-Price').value);
+    formData.append('Price', price);
     formData.append('specs_liter', document.getElementById('f-specs_liter').value);
     formData.append('specs_fuel', document.getElementById('f-specs_fuel').value);
     formData.append('specs_year', document.getElementById('f-specs_year').value);
@@ -457,7 +526,7 @@
       closeModal();
       loadEngines();
     } catch (err) {
-      errorBox.textContent = 'Failed to save. Check required fields and try again.';
+      errorBox.textContent = 'Failed to save. Check your fields and try again.';
       console.error(err);
     }
   }
@@ -472,9 +541,6 @@
       console.error(err);
     }
   }
-
-  // Modal only closes via Cancel or Save — no click-outside or Escape-to-close
 </script>
-
 </body>
 </html>
