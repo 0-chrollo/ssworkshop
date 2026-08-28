@@ -54,14 +54,9 @@
 
 
 
-
 <section class="all-stock">
 
-  <!-- BACKEND NOTE: brand list + counts should be generated dynamically from
-       your engine inventory (group by brand, count listings per brand).
-       The checkbox input is a CSS-only accordion toggle — swap in real
-       <input type="checkbox" name="brand" value="..."> filters when you
-       wire this up so it also filters the grid below. -->
+  <!-- Brand Filter Accordion (Leave as is for now) -->
   <div class="filter-accordion">
     <input type="checkbox" id="brand-toggle" class="filter-toggle">
     <label for="brand-toggle" class="filter-header">
@@ -69,95 +64,88 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </label>
     <div class="filter-body">
-      <div class="filter-row"><span>Lamborghini</span><span class="filter-row-count">1</span></div>
-      <div class="filter-row"><span>Land Rover</span><span class="filter-row-count">13</span></div>
-      <div class="filter-row"><span>Lexus</span><span class="filter-row-count">11</span></div>
-      <div class="filter-row"><span>Mahindra</span><span class="filter-row-count">2</span></div>
-
+      <div class="filter-row"><span>Audi</span><span class="filter-row-count">1</span></div>
+      <div class="filter-row"><span>Ford</span><span class="filter-row-count">1</span></div>
     </div>
   </div>
 
-  <p class="results-count">Showing <strong>24</strong> of <strong>50</strong> results</p>
+  <p class="results-count">Showing your live inventory from PocketBase</p>
 
-  <div class="product-grid">
-
-    <!-- Card 1 -->
-    <div class="product-card">
-      <div class="product-card-image">
-        <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
-      </div>
-      <div class="product-card-body">
-        <div class="product-card-category">Engines</div>
-        <!-- Long title example: shows how the 2-line clamp truncates with "..." -->
-        <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
-        <div class="product-card-price">R18 500</div>
-        <button class="product-card-button">
-          <a href="engine-details.html" style=" text-decoration: none; color:white">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-          Enquire </a>
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="product-card">
-      <div class="product-card-image">
-        <img src="assets/gearboxesand.jpg" alt="BMW 320 E46 16v N42 Engine">
-      </div>
-      <div class="product-card-body">
-        <div class="product-card-category">Engines</div>
-        <div class="product-card-title">BMW 320 E46 16v - N42 Engine</div>
-        <div class="product-card-price">R21 500</div>
-        <button class="product-card-button">
-          <a href="engine-details.html" style=" text-decoration: none; color:white">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-          Enquire </a>
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 3: extra-long title, demonstrates the fixed-size behaviour -->
-    <div class="product-card">
-      <div class="product-card-image">
-        <img src="images/car-engine.jpg" alt="BMW 325 E46 Double Vanos M54B25 Full Engine Complete With Loom">
-      </div>
-      <div class="product-card-body">
-        <div class="product-card-category">Engines</div>
-        <div class="product-card-title">BMW 325 E46 Double Vanos M54B25 Full Engine Complete With Loom</div>
-        <div class="product-card-price">R26 500</div>
-        <button class="product-card-button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-          Enquire
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 4: short title, still same card size as card 3 -->
-    <div class="product-card">
-      <div class="product-card-image">
-        <img src="images/car-engine.jpg" alt="BMW 320 E46 16v Engine">
-      </div>
-      <div class="product-card-body">
-        <div class="product-card-category">Engines</div>
-        <div class="product-card-title">BMW 320 E46 16v Engine</div>
-        <div class="product-card-price">R26 500</div>
-        <button class="product-card-button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-          Enquire
-        </button>
-      </div>
-    </div>
-
+  <!-- THE PRODUCT GRID -->
+  <div class="product-grid" id="product-grid">
+    <!-- JavaScript will automatically insert your database engines here! -->
   </div>
 
-  </section>
+</section>
 
+<!-- PocketBase JavaScript SDK -->
+<script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@v0.21.0/dist/pocketbase.umd.js"></script>
 
+<script>
+  // 1. Initialize PocketBase  client
+   const pb = new PocketBase('https://tm4r3gfnhe1700v.ba7w.pocketbasecloud.com');
+
+  async function loadEngines() {
+    const grid = document.getElementById('product-grid');
+    grid.innerHTML = '<p>Loading engines from database...</p>';
+
+    try {
+      // 2. Fetch records from your 'Engines' collection
+      const records = await pb.collection('Engines').getList(1, 50, {
+        sort: '-created',
+      });
+
+      grid.innerHTML = '';
+
+      if (records.items.length === 0) {
+        grid.innerHTML = '<p>No engines found in inventory yet.</p>';
+        return;
+      }
+
+      // 3. Loop through database items
+      records.items.forEach((engine) => {
+        const imageUrl = engine.assets 
+          ? pb.files.getUrl(engine, engine.assets) 
+          : 'assets/gearboxesand.jpg';
+
+        const title = engine.engine_name || 'Untitled Engine';
+        const price = engine.Price || '0';
+
+        const cardHTML = `
+          <div class="product-card">
+            <div class="product-card-image">
+              <img src="${imageUrl}" alt="${title}">
+            </div>
+            <div class="product-card-body">
+              <div class="product-card-category">Engines</div>
+              <div class="product-card-title">${title}</div>
+              <div class="product-card-price">R ${price}</div>
+              <button class="product-card-button">
+                <a href="engine-details.html?id=${engine.id}" style="text-decoration: none; color:white; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                  Enquire
+                </a>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.innerHTML += cardHTML;
+      });
+
+    } catch (error) {
+      console.error('PocketBase Error Details:', error);
+      grid.innerHTML = '<p style="color: red;">Failed to load inventory. Check your browser console (F12) for details.</p>';
+    }
+  }
+
+  loadEngines();
+</script>
 
 
 
 
 <script src="scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@v0.21.0/dist/pocketbase.umd.js"></script>
 
 </body>
 </html>

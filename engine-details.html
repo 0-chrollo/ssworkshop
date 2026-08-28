@@ -645,12 +645,154 @@
 </div>
 </section>
 
+<!-- PocketBase JavaScript SDK -->
+<script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@v0.21.0/dist/pocketbase.umd.js"></script>
+
+<script>
+  const pb = new PocketBase('https://tm4r3gfnhe1700v.ba7w.pocketbasecloud.com');
+
+  async function loadEngineDetails() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const engineId = urlParams.get('id');
+
+    if (!engineId) {
+      document.querySelector('.page').innerHTML = '<h2 style="text-align:center; padding: 50px;">No engine specified. Please select one from the inventory.</h2>';
+      return;
+    }
+
+    try {
+      const engine = await pb.collection('Engines').getFirstListItem(`id="${engineId}"`);
+
+      const imageUrl = engine.assets 
+        ? pb.files.getUrl(engine, engine.assets) 
+        : 'assets/gearboxesand.jpg';
+
+      const title = engine.engine_name || 'Untitled Engine';
+      const price = engine.Price ? `R${Number(engine.Price).toLocaleString()}` : 'R0';
+      const brand = engine.brand || 'Engines';
+      const description = engine.description || 'No description provided.';
+      const engineCode = engine.engine_code || 'N/A';
+      const liter = engine.specs_liter || 'N/A';
+      const fuel = engine.specs_fuel || 'N/A';
+      const year = engine.specs_year || 'N/A';
+
+      // Breadcrumb
+      document.querySelector('.breadcrumb').innerHTML = `
+        <a href="engines.html">&lsaquo; Engines</a>
+        <span>/</span>
+        <a href="#">${brand} engines</a>
+        <span>/</span>
+        <span class="current">${title}</span>
+      `;
+
+      // Gallery Images
+      document.querySelectorAll('.main-image img, .thumb img, .enquiry-item-box img').forEach(img => {
+        img.src = imageUrl;
+        img.alt = title;
+      });
+
+      // Product Header Info
+      document.querySelector('.product-title').textContent = title;
+      document.querySelector('.product-price').textContent = price;
+
+      // Description
+      document.querySelector('.accordion-content-inner p').textContent = description;
+
+      // Specifications Rows matching exact database attributes
+      const specsContainer = document.querySelectorAll('.accordion-content-inner')[1];
+      if (specsContainer) {
+        specsContainer.innerHTML = `
+          <div class="spec-row"><span class="spec-label">Engine Code</span><span class="spec-value">${engineCode}</span></div>
+          <div class="spec-row"><span class="spec-label">Liter / Capacity</span><span class="spec-value">${liter}</span></div>
+          <div class="spec-row"><span class="spec-label">Fuel Type</span><span class="spec-value">${fuel}</span></div>
+          <div class="spec-row"><span class="spec-label">Year Range</span><span class="spec-value">${year}</span></div>
+          <div class="spec-row"><span class="spec-label">Brand</span><span class="spec-value">${brand}</span></div>
+        `;
+      }
+
+      // Enquiry Form Hidden Fields & Preview Text
+      document.querySelector('.enquiry-item-name').textContent = title;
+      document.querySelector('input[name="item_name"]').value = title;
+      document.querySelector('input[name="item_code"]').value = engineCode;
+
+    } catch (error) {
+      console.error('Error loading engine details:', error);
+      document.querySelector('.page').innerHTML = '<h2 style="text-align:center; padding: 50px; color:red;">Could not load engine details. Make sure your PocketBase server is running!</h2>';
+    }
+  }
+
+  loadEngineDetails();
+</script>
 
 
 
 
 
 
+<footer class="footer">
+
+  <!-- Top: Brand + Nav Columns -->
+  <div class="footer__top">
+
+    <!-- Brand -->
+    <div class="footer__brand">
+      <h2>SS Workshop & Fitment Centre</h2>
+      <p>Bloemfontein's engine specialists. We rebuild, service, and supply parts to keep your vehicle running at its best.</p>
+      <div class="footer__social">
+
+        <a href="#" class="footer__social-icon footer__social-icon--facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <a href="https://wa.me/27829455152" target="_blank" class="footer__social-icon footer__social-icon--whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="footer__col">
+      <h4>Services</h4>
+      <a href="#">Engine Specialist Services</a>
+      <a href="#">Minor & Major Servicing</a>
+      <a href="#">Engines & Gearboxes</a>
+      <a href="#">Injectors & Turbochargers</a>
+    </div>
+
+    <!-- Company -->
+    <div class="footer__col">
+      <h4>Company</h4>
+      <a href="index.html">Home</a>
+ 
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <a href="tel:0829455152">082 945 5152</a>
+      <a href="https://wa.me/27829455152" target="_blank">WhatsApp Us</a>
+      <a href="contact.html">104 Fritz Stockenstrom, Bloemfontein</a>
+    </div>
+
+  </div>
+  <!-- /footer__top -->
+
+  <!-- Bottom Bar -->
+  <div class="footer__bottom">
+    <div class="footer__bottom-links">
+    </div>
+    <span class="footer__copyright">&copy; 2026 SS Workshop & Fitment Centre. All rights reserved.</span>
+  </div>
+  <!-- /footer__bottom -->
+
+</footer>
+
+
+
+
+ 
 
 <script src="scripts.js"></script>
 </body>

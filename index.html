@@ -597,124 +597,113 @@
   </style>
   
   
+  <section class="just-in">
+    <div class="section-header">
+      <div class="section-header-text">
+        <h2 class="section-title">Shop<span style="color:#0f3d6e;"> Engines </span></h2>
+        <p class="section-desc">Brand new stock added directly to our showroom floor, be the first to grab a deal. &#8594;</p>
+      </div>
+      
+      <div class="nav-arrows">
+        <button class="nav-arrow" id="arrowPrev" aria-label="Previous">&#8592;</button>
+        <button class="nav-arrow" id="arrowNext" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  
+    <div class="scroll-wrapper">
+      <!-- Restored the track container with id="track" -->
+      <div class="vehicles-track" id="track">
+        <div class="track-spacer"></div>
+      </div>
+  
+      <div class="scroll-bar-wrap">
+        <div class="scroll-bar-track">
+          <div class="scroll-bar-thumb" id="thumb"></div>
+        </div>
+        <span class="scroll-count" id="count">1 / 4</span>
+      </div>
+    
+      <p class="view-more-link"><a href="engines.html">View more Engines &#8594;</a></p>
+    </div>
+  </section>
+  
+  <!-- PocketBase JavaScript SDK -->
+  <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@v0.21.0/dist/pocketbase.umd.js"></script>
+  
+  <script>
+    const pb = new PocketBase('https://tm4r3gfnhe1700v.ba7w.pocketbasecloud.com');
+  
+    async function loadHomeEngines() {
+      try {
+        const resultList = await pb.collection('Engines').getList(1, 8, {
+          sort: '-created',
+        });
+  
+        const track = document.getElementById('track');
+        if (!track) return;
+  
+        const spacer = track.querySelector('.track-spacer');
+        track.innerHTML = '';
+        if (spacer) track.appendChild(spacer);
+  
+        resultList.items.forEach((engine, index) => {
+          const imageUrl = engine.assets 
+            ? pb.files.getUrl(engine, engine.assets) 
+            : 'assets/gearboxesand.jpg';
+  
+          const title = engine.engine_name || 'Untitled Engine';
+          const price = engine.Price ? `R${Number(engine.Price).toLocaleString()}` : 'R0';
+          const brand = engine.brand || 'Engines';
+          const cardColorClass = index % 2 === 0 ? 'blue' : 'dark';
+  
+          const cardHTML = `
+            <div class="vehicle-card ${cardColorClass}">
+              <div class="product-card">
+                <div class="product-card-image">
+                  <img src="${imageUrl}" alt="${title}">
+                </div>
+                <div class="product-card-body">
+                  <div class="product-card-category">${brand}</div>
+                  <div class="product-card-title">${title}</div>
+                  <div class="product-card-price">${price}</div>
+                  <div class="product-card-button">
+                    <a href="engine-details.html?id=${engine.id}">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                      Enquire
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          track.innerHTML += cardHTML;
+        });
+  
+      } catch (error) {
+        console.error('Error loading homepage engines:', error);
+      }
+    }
+  
+    loadHomeEngines();
+  </script>
 
-    <section class="just-in">
-  
-      <div class="section-header">
-        <div class="section-header-text">
-       
-          <h2 class="section-title">Shop<span style="color:#0f3d6e;"> Engines </span></h2>
-          <p class="section-desc">Brand new stock added directly to our showroom floor, be the first to grab a deal. &#8594;</p>
-        </div>
-  
-        <!-- Desktop-only arrows, top-right of the header -->
-        <div class="nav-arrows">
-          <button class="nav-arrow" id="arrowPrev" aria-label="Previous">&#8592;</button>
-          <button class="nav-arrow" id="arrowNext" aria-label="Next">&#8594;</button>
-        </div>
-      </div>
-  
-      <div class="scroll-wrapper">
-        <div class="vehicles-track" id="track">
-          <div class="track-spacer"></div>
-  
-          <!-- ═══════════════════════════════════════
-               VEHICLE CARDS
-               Add your own content inside each card.
-               Card colours: blue | dark | accent
-               Copy/paste a block to add more cards.
-          ════════════════════════════════════════ -->
-  
-          <div class="vehicle-card blue">
-            <div class="product-card">
-              <div class="product-card-image">
-                <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
-              </div>
-              <div class="product-card-body">
-                <div class="product-card-category">Engines</div>
-                <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
-                <div class="product-card-price">R18 500</div>
-                <div class="product-card-button">
-                  <a href="engine-details.html">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    Enquire
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="vehicle-card dark">
-            <div class="product-card">
-              <div class="product-card-image">
-                <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
-              </div>
-              <div class="product-card-body">
-                <div class="product-card-category">Engines</div>
-                <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
-                <div class="product-card-price">R18 500</div>
-                <div class="product-card-button">
-                  <a href="engine-details.html">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    Enquire
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="vehicle-card dark">
-            <div class="product-card">
-              <div class="product-card-image">
-                <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
-              </div>
-              <div class="product-card-body">
-                <div class="product-card-category">Engines</div>
-                <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
-                <div class="product-card-price">R18 500</div>
-                <div class="product-card-button">
-                  <a href="engine-details.html">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    Enquire
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="vehicle-card dark">
-            <div class="product-card">
-              <div class="product-card-image">
-                <img src="assets/gearboxesand.jpg" alt="Audi 1.8T 20v BFB Engine">
-              </div>
-              <div class="product-card-body">
-                <div class="product-card-category">Engines</div>
-                <div class="product-card-title">Audi 1.8T 20v BFB Engine</div>
-                <div class="product-card-price">R18 500</div>
-                <div class="product-card-button">
-                  <a href="engine-details.html">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                    Enquire
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-        </div><!-- /vehicles-track -->
-  
-        <div class="scroll-bar-wrap">
-          <div class="scroll-bar-track">
-            <div class="scroll-bar-thumb" id="thumb"></div>
-          </div>
-          <span class="scroll-count" id="count">1 / 4</span>
-        </div>
-    
-        <p class="view-more-link"><a href="engines.html">View more Engines &#8594;</a></p>
-    
-      </div>
-    
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   <script>
     const track     = document.getElementById('track');
