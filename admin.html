@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SS Workshop — Admin</title>
+<style>
+  :root {
+    --charcoal: #1c1f22;
+    --charcoal-light: #2a2e33;
+    --steel: #6b7280;
+    --steel-light: #e5e7eb;
+    --amber: #123964;
+    --amber-dark: #133b66;
+    --bg: #f2f1ee;
+    --card: #ffffff;
+    --danger: #b3261e;
+    --radius: 3px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--charcoal);
+  }
+
+  /* Navbar */
+  .navbar {
+    background: var(--charcoal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+  .navbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+  }
+  .navbar .brand .mark {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .navbar .brand .mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .navbar .brand .sub {
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--steel-light);
+    display: block;
+    letter-spacing: 0.5px;
+  }
+  .navbar-right { display: flex; align-items: center; gap: 10px; }
+  .btn-website {
+    background: transparent;
+    border: 1px solid #4b5054;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .btn-website:hover { border-color: var(--amber); color: var(--amber); }
+  .btn-logout {
+    background: transparent;
+    border: none;
+    color: var(--steel-light);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 8px 4px;
+  }
+  .btn-logout:hover { color: #fff; }
+
+  /* Layout */
+  .container { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .page-head h1 { font-size: 20px; margin: 0; }
+  .page-head p { margin: 2px 0 0; font-size: 13px; color: var(--steel); }
+
+  .btn-primary {
+    background: var(--amber);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-primary:hover { background: var(--amber-dark); }
+
+  /* Engine cards */
+  .engine-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    border-left: 3px solid var(--amber);
+  }
+  .engine-card .info strong { font-size: 15px; }
+  .engine-card .info .meta { font-size: 12px; color: var(--steel); margin-top: 2px; }
+  .engine-card .price { font-weight: 700; color: var(--charcoal); margin-right: 18px; white-space: nowrap; }
+  .engine-card .row-main { display: flex; align-items: center; gap: 18px; flex: 1; min-width: 0; }
+  .engine-actions button {
+    border: 1px solid var(--steel-light);
+    background: #fff;
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 6px;
+  }
+  .engine-actions .edit-btn:hover { border-color: var(--amber); color: var(--amber-dark); }
+  .engine-actions .del-btn { color: var(--danger); border-color: #f1d4d1; }
+  .engine-actions .del-btn:hover { background: #fdf0ef; }
+
+  .empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--steel);
+    background: var(--card);
+    border-radius: var(--radius);
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(20,20,20,0.5);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 16px;
+    overflow-y: auto;
+    z-index: 100;
+  }
+  .modal-overlay.hidden { display: none; }
+  .modal {
+    background: #fff;
+    border-radius: 8px;
+    max-width: 520px;
+    width: 100%;
+    padding: 26px;
+  }
+  .modal h2 { margin: 0 0 4px; font-size: 18px; }
+  .modal .modal-sub { font-size: 13px; color: var(--steel); margin-bottom: 18px; }
+  .field-group { margin-bottom: 14px; }
+  .field-row { display: flex; gap: 12px; }
+  .field-row .field-group { flex: 1; }
+  label { font-size: 12px; font-weight: 600; color: var(--charcoal); display: block; margin-bottom: 5px; }
+  input, textarea {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid #d8d8d8;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-family: inherit;
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--amber); }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+  .btn-secondary {
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .error-text { color: var(--danger); font-size: 13px; margin-top: 8px; }
+
+  /* Login screen */
+  #login-screen {
+    max-width: 340px;
+    margin: 90px auto;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  #login-screen h1 { font-size: 18px; margin-top: 0; }
+  #login-screen .sub { font-size: 13px; color: var(--steel); margin-bottom: 20px; }
+
+  .hidden { display: none; }
+
+  @media (max-width: 560px) {
+    .engine-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .engine-card .price { margin-right: 0; }
+    .field-row { flex-direction: column; gap: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <h1>Admin Login</h1>
+  <div class="sub">SS Workshop &amp; Fitment Centre Admin</div>
+  <div class="field-group">
+    <label>Email</label>
+    <input type="email" id="login-email">
+  </div>
+  <div class="field-group">
+    <label>Password</label>
+    <input type="password" id="login-password">
+  </div>
+  <div id="login-error" class="error-text"></div>
+  <button class="btn-primary" style="width:100%; justify-content:center;" onclick="login()">Log In</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="hidden">
+  <div class="navbar">
+    <div class="brand">
+      <div class="mark"><img src="sslogo.png" alt="SS Workshop logo"></div>
+      <div>
+        SS WORKSHOP
+        <span class="sub">Fitment Centre</span>
+      </div>
+    </div>
+    <div class="navbar-right">
+      <a href="index.html" class="btn-website">Go to Website ↗</a>
+      <button class="btn-logout" onclick="logout()">Log Out</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="page-head">
+      <div>
+        <h1>Engine Inventory</h1>
+        <p id="engine-count">Loading...</p>
+      </div>
+      <button class="btn-primary" onclick="openAddModal()">+ Add New Engine</button>
+    </div>
+
+    <div id="engine-list"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="modal-overlay" class="modal-overlay hidden">
+  <div class="modal">
+    <h2 id="modal-title">Add New Engine</h2>
+    <div class="modal-sub">Fill in the details below, then save.</div>
+
+    <input type="hidden" id="edit-id">
+
+    <div class="field-group">
+      <label>Engine Name</label>
+      <input type="text" id="f-engine_name" placeholder="e.g. 2.0 TDI Common Rail">
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label>Brand</label>
+        <input type="text" id="f-brand" placeholder="e.g. Volkswagen">
+      </div>
+      <div class="field-group">
+        <label>Engine Code</label>
+        <input type="text" id="f-engine_code" placeholder="e.g. CFFB">
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label>Price (R)</label>
+        <input type="number" id="f-Price" placeholder="0">
+      </div>
+      <div class="field-group">
+        <label>Liter / Capacity</label>
+        <input type="text" id="f-specs_liter" placeholder="e.g. 2.0L">
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label>Fuel Type</label>
+        <input type="text" id="f-specs_fuel" placeholder="e.g. Diesel">
+      </div>
+      <div class="field-group">
+        <label>Year Range</label>
+        <input type="text" id="f-specs_year" placeholder="e.g. 2012–2016">
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Description</label>
+      <textarea id="f-description" rows="3" placeholder="Condition, mileage, notes..."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label>Photo</label>
+      <input type="file" id="f-assets" accept="image/*">
+    </div>
+
+    <div id="form-error" class="error-text"></div>
+
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveEngine()">Save Engine</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@v0.21.0/dist/pocketbase.umd.js"></script>
+<script>
+  const pb = new PocketBase('https://tm4r3gfnhe1700v.ba7w.pocketbasecloud.com');
+
+  if (pb.authStore.isValid) showDashboard();
+
+  async function login() {
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    const errorBox = document.getElementById('login-error');
+    errorBox.textContent = '';
+    try {
+      await pb.collection('staff').authWithPassword(email, password);
+      showDashboard();
+    } catch (err) {
+      errorBox.textContent = 'Login failed. Check your email and password.';
+      console.error(err);
+    }
+  }
+
+  function logout() {
+    pb.authStore.clear();
+    document.getElementById('dashboard').classList.add('hidden');
+    document.getElementById('login-screen').classList.remove('hidden');
+  }
+
+  function showDashboard() {
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('dashboard').classList.remove('hidden');
+    loadEngines();
+  }
+
+  async function loadEngines() {
+    const list = document.getElementById('engine-list');
+    const countLabel = document.getElementById('engine-count');
+    list.innerHTML = '';
+    try {
+      const records = await pb.collection('Engines').getFullList({ sort: '-created' });
+      countLabel.textContent = records.length === 1 ? '1 engine listed' : `${records.length} engines listed`;
+
+      if (records.length === 0) {
+        list.innerHTML = '<div class="empty-state">No engines yet. Click "Add New Engine" to list your first one.</div>';
+        return;
+      }
+
+      list.innerHTML = records.map(e => `
+        <div class="engine-card">
+          <div class="row-main">
+            <div class="info">
+              <strong>${escapeHtml(e.engine_name || 'Untitled Engine')}</strong>
+              <div class="meta">${escapeHtml(e.brand || '')}${e.engine_code ? ' · ' + escapeHtml(e.engine_code) : ''}${e.specs_year ? ' · ' + escapeHtml(e.specs_year) : ''}</div>
+            </div>
+          </div>
+          <div class="price">R${Number(e.Price || 0).toLocaleString()}</div>
+          <div class="engine-actions">
+            <button class="edit-btn" onclick='editEngine(${JSON.stringify(e).replace(/'/g, "&#39;")})'>Edit</button>
+            <button class="del-btn" onclick="deleteEngine('${e.id}')">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    } catch (err) {
+      list.innerHTML = '<div class="empty-state">Could not load engines. Try refreshing the page.</div>';
+      console.error(err);
+    }
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function openAddModal() {
+    document.getElementById('modal-title').textContent = 'Add New Engine';
+    document.getElementById('edit-id').value = '';
+    ['engine_name','brand','engine_code','Price','specs_liter','specs_fuel','specs_year','description'].forEach(f => {
+      document.getElementById('f-' + f).value = '';
+    });
+    document.getElementById('f-assets').value = '';
+    document.getElementById('form-error').textContent = '';
+    document.getElementById('modal-overlay').classList.remove('hidden');
+  }
+
+  function editEngine(engine) {
+    document.getElementById('modal-title').textContent = 'Edit Engine';
+    document.getElementById('edit-id').value = engine.id;
+    document.getElementById('f-engine_name').value = engine.engine_name || '';
+    document.getElementById('f-brand').value = engine.brand || '';
+    document.getElementById('f-engine_code').value = engine.engine_code || '';
+    document.getElementById('f-Price').value = engine.Price || '';
+    document.getElementById('f-specs_liter').value = engine.specs_liter || '';
+    document.getElementById('f-specs_fuel').value = engine.specs_fuel || '';
+    document.getElementById('f-specs_year').value = engine.specs_year || '';
+    document.getElementById('f-description').value = engine.description || '';
+    document.getElementById('form-error').textContent = '';
+    document.getElementById('modal-overlay').classList.remove('hidden');
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.add('hidden');
+  }
+
+  async function saveEngine() {
+    const errorBox = document.getElementById('form-error');
+    errorBox.textContent = '';
+    const id = document.getElementById('edit-id').value;
+
+    const formData = new FormData();
+    formData.append('engine_name', document.getElementById('f-engine_name').value);
+    formData.append('brand', document.getElementById('f-brand').value);
+    formData.append('engine_code', document.getElementById('f-engine_code').value);
+    formData.append('Price', document.getElementById('f-Price').value);
+    formData.append('specs_liter', document.getElementById('f-specs_liter').value);
+    formData.append('specs_fuel', document.getElementById('f-specs_fuel').value);
+    formData.append('specs_year', document.getElementById('f-specs_year').value);
+    formData.append('description', document.getElementById('f-description').value);
+
+    const fileInput = document.getElementById('f-assets');
+    if (fileInput.files.length > 0) {
+      formData.append('assets', fileInput.files[0]);
+    }
+
+    try {
+      if (id) {
+        await pb.collection('Engines').update(id, formData);
+      } else {
+        await pb.collection('Engines').create(formData);
+      }
+      closeModal();
+      loadEngines();
+    } catch (err) {
+      errorBox.textContent = 'Failed to save. Check required fields and try again.';
+      console.error(err);
+    }
+  }
+
+  async function deleteEngine(id) {
+    if (!confirm('Delete this engine? This cannot be undone.')) return;
+    try {
+      await pb.collection('Engines').delete(id);
+      loadEngines();
+    } catch (err) {
+      alert('Failed to delete.');
+      console.error(err);
+    }
+  }
+
+  // Modal only closes via Cancel or Save — no click-outside or Escape-to-close
+</script>
+
+</body>
+</html>
