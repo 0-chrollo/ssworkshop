@@ -166,68 +166,111 @@
 </nav>
 
 
-
-
 <style>
+  .hero {
+      height: 550px;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                  url('assets/ssbg.jpg') center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+  }
 
-    .hero {
-        height: 550px;
-        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                    url('assets/ssbg.jpg') center/cover;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-align: center;
-    }
+  .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e5e7eb;
+      margin-bottom: 10px;
+  }
 
-    .usp{
+  .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin: 0 0 12px 0;
+      line-height: 1.2;
+  }
 
-        margin-top: 25px;
+  .usp {
+      font-size: 0.95rem;
+      color: #d1d5db;
+      max-width: 600px;
+      margin: 0 0 30px 0;
+      line-height: 1.5;
+  }
 
-        padding: 5px;
-    }
+  .hero-btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap; 
+  }
 
-    h3 {
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding: 10px;
-        letter-spacing: 1px;
-        margin-top: 40px;
-    }
+  .hero-btn {
+      padding: 11px 22px;
+      background: #123964;
+      color: white;
+      border: 2px solid rgba(135, 151, 181, 0.846);
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-radius: 35px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease, transform 0.1s ease;
+      white-space: nowrap;
+  }
 
-    .hero-btn {
-        margin-top: 60px;
-        padding: 10px 25px;
-        background:  #0e2d4e;
-        color: white;
-        border: 2px solid rgba(135, 151, 181, 0.846);
-        font-size: 0.80rem;
-        font-weight: bold;
-        letter-spacing: 1px;
-        border-radius: 35px;;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-    }
+  .hero-btn:hover {
+      background: #133b66;
+      transform: translateY(-2px);
+  }
 
-    .hero-btn:hover {
-        background: #091549;
-    }
+  .hero-btn-secondary {
+      background: transparent;
+      border: 2px solid #ffffff;
+      color: white;
+  }
 
-    @media (max-width: 768px) {
-        .hero { height: 500px; }
-        h1 { font-size: 3rem; }
-    }
+  .hero-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 768px) {
+      .hero { height: 500px; }
+      .hero h1 { font-size: 1.8rem; }
+      .usp { font-size: 0.85rem; padding: 0 10px; }
+  }
+
+  @media (max-width: 380px) {
+      .hero-btn {
+          padding: 9px 14px;
+          font-size: 0.7rem;
+      }
+      .hero h1 { font-size: 1.6rem; }
+  }
 </style>
 
 <div class="hero">
-    <h3>Bloemfontein's Engine Specialists</h3>
-    <p class="usp">Engine Rebuilds · Vehicle Services · Parts Supply | Power. Performance. Reliability. All Under One Roof.</p>
-    <a href="contact.html" class="hero-btn">Book Now</a>
+  <div class="hero-eyebrow">Bloemfontein's Engine Specialists</div>
+  <h1>Power. Performance. Reliability.</h1>
+  <p class="usp">Engine rebuilds, specialist bakkie servicing, and guaranteed quality parts. Backed by warranty and an engine exchange program.</p>
+  
+  <div class="hero-btn-group">
+      <a href="contact.html" class="hero-btn">Book Now</a>
+      <a href="engines.html" class="hero-btn hero-btn-secondary"> Shop Engines</a>
   </div>
-
+</div>
 
 
 
